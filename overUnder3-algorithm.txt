@@ -1,0 +1,219 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): play a game where the user guesses a number from 1 to 100 
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-userGuess
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. game loop: prompt the userGuess, input userGuess, provide feedback
+4. end of game
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules: "I'm thinking of a number from 1 to 100. What is it? "
+-prompt : "I'm thinking of a number between 1 and 100. Guess what it is: "
+-guess feedback : "That's right -- it's "+ target 
+-guess feedback : "That's too high -- guess again :"
+-guess feedback : "That's too low -- guess again :"
+-guess feedback : "You already guessed " + userGuess + " -- guess again: ";
+-error message : "I really want a number from 1 to 100 -- guess again :"
+-end of game message : "Thanks for playing overUnder game with me!"
+
+
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-userGuess = (integer) each user guess of target number
+-target = (integer) the number to be guessed
+-count = (integer) how many guesses user tried
+-i = (integer) loop index
+-guess[MAX_GUESS] = (integer)  // container for the values in the list
+-nGuess = 0 (integer)// the number of guesses
+- int MAX_GUESS = 100; //list capacity
+
+3. Algorithm instructions (recipe)
+***data
+10 set target = random number from 1 to 100 [make up a number, or use a random number generator...]
+20 set userGuess
+30 set i
+40 set count = 0
+50 set nGuess = 0
+60 set guess[MAX_GUESS]
+70 set global MAX_GUESS = 100
+***introduction 
+80 output introduction: objective, author, instructions/rules
+***
+90 output prompt "I'm thinking of a number between 1 and 100. Guess what it is: "
+100 input userGuess
+110 set count = 0
+120 set i equal to 0
+130 if userGuess is equal to guess[i] then count = 1 then output feedback : "You already guessed " + userGuess + " -- guess again: " and then skip to instruction 100
+140 add 1 to i
+160 if i is less than nGuess then skip to instruction 130
+170 if count is equal to 0 and nGuess is less than MAX_GUESS skip to instruction 190
+180 skip to instruction 100
+190 if userGuess is larger than and equal to 1 and userGuess is less than and equal to 100 then skip to instruction 220
+200 output error message : "I really want a number from 1 to 100 -- guess again :"
+210 skip to instruction 100
+220 if userGuess is equal to target skip to instruction 260
+230 if userGuess is bigger than target output feedback : "That's too high -- guess again :" and skip to instruction 100
+240 if userGuess is less than target output feedback : "That's too low -- guess again :" and skip to instruction 100
+250 guess[nGuess++] = userGuess
+270 skip to instruction 100
+260 output feedback : "That's right -- it's "+ target 
+***end of game
+280 output "Thanks for playing overUnder game with me!"
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+
+Test case #1: 
+Purpose: user guesses the target
+Inputs: target = 56, userGuess = 56
+Expected Results: 
+...
+What is your guess [1-100 or 0 to Exit]? 56
+"That's right -- it's 56"
+Thanks for playing overUnder game with me!
+
+10 set target = 56
+20 set userGuess = 56
+30 set i
+40 set count = 0
+50 set nGuess = 0
+60 set guess[MAX_GUESS]
+70 set global MAX_GUESS = 100
+***introduction 
+80 output introduction: objective, author, instructions/rules
+***
+90 output prompt "I'm thinking of a number between 1 and 100. Guess what it is: "
+100 input userGuess = 56
+110 set count = 0
+120 set i equal to 0
+130 false
+140 i = 1
+160 false
+170 true skip to instruction 190
+190 true then skip to instruction 220
+220 true skip to instruction 260
+260 output feedback : "That's right -- it's "+ 56
+***end of game
+280 output "Thanks for playing overUnder game with me!"
+999 END
+
+999 END
+
+Test case #2: 
+Purpose: user guesses the number lower than target
+Inputs: target = 56, userGuess = 55
+Expected Results: 
+...
+I'm thinking of a number between 1 and 100. Guess what it is: 55
+That's too low -- guess again : 
+...
+
+10 set target = 56
+20 set userGuess =55
+30 set i
+40 set count = 0
+50 set nGuess = 0
+60 set guess[MAX_GUESS]
+70 set global MAX_GUESS = 100
+***introduction 
+80 output introduction: objective, author, instructions/rules
+***
+90 output prompt "I'm thinking of a number between 1 and 100. Guess what it is: "
+100 input userGuess =55
+110 set count = 0
+120 set i equal to 0
+130 false
+140 i =1 
+160 false
+170 true
+190 true then skip to instruction 220
+220 false
+230 false
+240 true output feedback : "That's too low -- guess again :" and skip to instruction 100
+250 guess[nGuess++] = 55
+270 skip to instruction 100
+100 input userGuess = 55
+110 set count = 0
+120 set i equal to 0
+130 if userGuess =55 is equal to guess[0]= 55  true then count = 1 then output feedback : "You already guessed " + userGuess + " -- guess again: " and then skip to instruction 100
+
+999 END
+
+Test case #3: 
+Purpose: user guesses the duplicate number 
+Inputs: target = 56, userGuess = 55 , 55
+Expected Results: 
+...
+I'm thinking of a number between 1 and 100. Guess what it is: 55
+That's too low -- guess again :55
+You already guessed 55 -- guess again:
+...
+10 set target = 56
+20 set userGuess =55
+30 set i
+40 set count = 0
+50 set nGuess = 0
+60 set guess[MAX_GUESS]
+70 set global MAX_GUESS = 100
+***introduction 
+80 output introduction: objective, author, instructions/rules
+***
+90 output prompt "I'm thinking of a number between 1 and 100. Guess what it is: "
+100 input userGuess =55
+110 set count = 0
+120 set i equal to 0
+130 false
+140 i =1 
+160 false
+170 true
+190 true then skip to instruction 220
+220 false
+230 false
+240 true output feedback : "That's too low -- guess again :" and skip to instruction 100
+250 guess[nGuess++] = 55
+270 skip to instruction 100
+100 input userGuess = 55
+
+
+Test case #4 :
+Purpose: user guesses the number lower than target
+Inputs: target = 56, userGuess = 101
+Expected Results: 
+...
+You already guessed 1 -- guess again: 101
+I really want a number from 1 to 100 -- guess again :
+...
+
+10 set target = 56
+20 set userGuess =101
+30 set i
+40 set count = 0
+50 set nGuess = 0
+60 set guess[MAX_GUESS]
+70 set global MAX_GUESS = 100
+***introduction 
+80 output introduction: objective, author, instructions/rules
+***
+90 output prompt "I'm thinking of a number between 1 and 100. Guess what it is: "
+100 input userGuess =101
+110 set count = 0
+120 set i equal to 0
+130 false
+140 add i =1 
+160 false
+170 true MAX_GUESS skip to instruction 190
+190 false
+200 output error message : "I really want a number from 1 to 100 -- guess again :"
+210 skip to instruction 100
+100 input userGuess = 
+
+999 END

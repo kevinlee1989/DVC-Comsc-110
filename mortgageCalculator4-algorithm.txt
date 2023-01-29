@@ -1,0 +1,291 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number: Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): calculate the monthly payment on borrowed amount of money to be paid back over 30 years.
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-amountBorrowed
+-interestRate
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. calculate the monthly payment
+4. have password
+5. output results with pertinent information
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-label "Amount borrowed = " + amountBorrowed
+-label "Annual interest rate = " + interestRate [unformatted]
+-label "Payback period = " + paybackPeriod "Years"
+-label "Monthly payment = $ " + monthlyPayment [formatted 2 digits as decimal point]
+-label "What's the amount borrowed? " + amountBorrowed
+-label "What's the annual interest rate? " + interestRate
+-label "empty file"
+-prompt "password"
+-prompt "Please enter an input filename [i.e. : x.txt]"
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-amountBorrowed = (integer) dollar amount to be borrowed
+-interestRate = (decimal) annual percent interest rate
+-paybackPeriod = (integer) payback period measured in years
+-monthlyPayment = (decimal) monthly payment borrower pays on the  mortgage
+using this formula:  (p * ((1+r)^n) * r) / ((1+r)^n) -1)
+-p = (decimal) the mortgage amount as entered by the user
+-r = (decimal) the monthly decimal interest rate[valid values: 0-1]
+-n = (integer) the number of monthly payments in the payback period
+-count = 0 (integer) determine file is empty or not 
+
+
+3. Algorithm instructions (recipe)
+***data
+10 set amountBorrowed to the dollar amount for this mortgage
+20 set interestRate to the annual interest rate
+30 set paybackPeriod to the number of years to payback this mortgage
+40 set monthlyPayment
+50 set p
+60 set r
+70 set n 
+80 set password
+90 set ifstream fin
+100 set fileName
+***user introduction 
+110 output introduction: objective, author, instructions/rules
+***read input file
+120 fileName = getFileName
+*** subprogram get user specified filename
+1201 set getFileName as string
+1202 set fN
+1203 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+1204 input fN
+1205 if fN's length is not bigger than 5 then skip to 1704
+1206 return value fN to getFileName
+130 file input
+***programmar password
+133 output label "Password"
+135 input password
+136 if password is 1989282 then skip to 1381
+138 skip to 133
+1381 file input amountBorrowed
+1382 file input interesRate
+1383 if amountBorrowed is larger than 1 then count ++
+***calculate the monthly payment
+140 set p = amountBorrowed
+150 set r = (interestRate / 100) /12
+160 set n = paybackPeriod * 12
+170 set monthlyPayment =  (p * ((1+r)^n) * r) / ((1+r)^n) -1)
+***output results with pertinent information
+171 if count is eqaul to 0 then output empty file then skip to instruction 230
+173 output "What's the amount borrowed? " + amountBorrowed
+174 output "What's the annual interest rate? " + interestRate
+180 output "Amount borrowed = " + amountBorrowed
+190 output "Annual interest rate = " + interestRate + "%"
+200 output "Payback period = " + paybackPeriod +  "Years"
+210 output "Monthly payment = $ " + monthlyPayment [formatted 2 digits past decimal point]
+220 if file do not meet cursor then skip to 1381
+230 close file
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: single example
+inputs: file input
+Please enter an input filename [i.e. : x.txt] : mortgage.txt
+Password :1989282
+What's the amount borrowed? 270000
+What's the annual interest rate? 5.125000
+
+Amount borrowed = $270000
+Annual interest rate = 5.125%
+Payback period = 30Years
+Monthly payment = $ 1470.11
+
+***data
+10 set amountBorrowed to the dollar amount for this mortgage
+20 set interestRate to the annual interest rate
+30 set paybackPeriod to the number of years to payback this mortgage
+40 set monthlyPayment
+50 set p
+60 set r
+70 set n 
+80 set password
+90 set ifstream fin
+100 set fileName
+105 set count 
+***user introduction 
+110 output introduction: objective, author, instructions/rules
+***read input file
+120 fileName = getFileName
+*** subprogram get user specified filename
+1201 set getFileName as string
+1202 set fN
+1203 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+1204 input fN = mortgage.txt
+1205 if fN's length is not bigger than 5 then skip to 1704
+1206 return value fN to getFileName
+130 file input
+***programmar password
+133 output label "Password"
+135 input password = 1989282
+136 if password is 1989282 then skip to 1381
+1381 file input amountBorrowed = 270000
+1382 file input interesRate = 5.125
+***calculate the monthly payment
+140 set p = amountBorrowed
+150 set r = (interestRate / 100) /12
+160 set n = paybackPeriod * 12
+170 set monthlyPayment =  (p * ((1+r)^n) * r) / ((1+r)^n) -1) =1470.11
+***output results with pertinent information
+173 output "What's the amount borrowed? " + amountBorrowed
+174 output "What's the annual interest rate? " + interestRate
+180 output "Amount borrowed = " + amountBorrowed
+190 output "Annual interest rate = " + interestRate + "%"
+200 output "Payback period = " + paybackPeriod +  "Years"
+210 output "Monthly payment = $ " + 1470.11 [formatted 2 digits past decimal point]
+220 false
+230 close file
+
+999 END
+
+Test case #2: 
+purpose: have more than 2 input
+inputs: file input
+Please enter an input filename [i.e. : x.txt] : mortgage.txt
+Password :1989282
+What's the amount borrowed? 270000
+What's the annual interest rate? 5.125000
+
+Amount borrowed = $270000
+Annual interest rate = 5.125%
+Payback period = 30Years
+Monthly payment = $ 1470.11
+What's the amount borrowed? 123123
+What's the annual interest rate? 1.12
+
+Amount borrowed = $123123
+Annual interest rate = 1.123%
+Payback period = 30Years
+Monthly payment = $ 403.01
+
+...
+
+10 set amountBorrowed to the dollar amount for this mortgage
+20 set interestRate to the annual interest rate
+30 set paybackPeriod to the number of years to payback this mortgage
+40 set monthlyPayment
+50 set p
+60 set r
+70 set n 
+80 set password
+90 set ifstream fin
+100 set fileName
+105 set count 
+***user introduction 
+110 output introduction: objective, author, instructions/rules
+***read input file
+120 fileName = getFileName
+*** subprogram get user specified filename
+1201 set getFileName as string
+1202 set fN
+1203 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+1204 input fN = mortgage.txt
+1205 if fN's length is not bigger than 5 then skip to 1704
+1206 return value fN to getFileName
+130 file input
+***programmar password
+133 output label "Password"
+135 input password = 1989282
+136 if password is 1989282 then skip to 1381
+1381 file input amountBorrowed = 270000
+1382 file input interesRate = 5.125
+1383 if amountBorrowed is larger than 1 then count =1
+***calculate the monthly payment
+140 set p = amountBorrowed
+150 set r = (interestRate / 100) /12
+160 set n = paybackPeriod * 12
+170 set monthlyPayment =  (p * ((1+r)^n) * r) / ((1+r)^n) -1) =1470.11
+***output results with pertinent information
+173 output "What's the amount borrowed? " + amountBorrowed
+174 output "What's the annual interest rate? " + interestRate
+180 output "Amount borrowed = " + amountBorrowed
+190 output "Annual interest rate = " + interestRate + "%"
+200 output "Payback period = " + paybackPeriod +  "Years"
+210 output "Monthly payment = $ " + 1470.11 [formatted 2 digits past decimal point]
+220 true
+1381 file input amountBorrowed = 123123
+1382 file input interesRate = 5.123
+1383 if amountBorrowed is larger than 1 then count =2
+***calculate the monthly payment
+140 set p = amountBorrowed
+150 set r = (interestRate / 100) /12
+160 set n = paybackPeriod * 12
+170 set monthlyPayment =  (p * ((1+r)^n) * r) / ((1+r)^n) -1) =403.01
+***output results with pertinent information
+171 if count is eqaul to 0 then output empty file then skip to instruction 230
+173 output "What's the amount borrowed? " + amountBorrowed
+174 output "What's the annual interest rate? " + interestRate
+180 output "Amount borrowed = " + amountBorrowed
+190 output "Annual interest rate = " + interestRate + "%"
+200 output "Payback period = " + paybackPeriod +  "Years"
+210 output "Monthly payment = $ " + 403.01 [formatted 2 digits past decimal point]
+220 false
+230 close file
+
+Test case #3: 
+purpose: empty file
+inputs: file input
+Please enter an input filename [i.e. : x.txt] : mortgage.txt
+Password :1989282
+empty file
+
+...
+
+10 set amountBorrowed to the dollar amount for this mortgage
+20 set interestRate to the annual interest rate
+30 set paybackPeriod to the number of years to payback this mortgage
+40 set monthlyPayment
+50 set p
+60 set r
+70 set n 
+80 set password
+90 set ifstream fin
+100 set fileName
+***user introduction 
+110 output introduction: objective, author, instructions/rules
+***read input file
+120 fileName = getFileName
+*** subprogram get user specified filename
+1201 set getFileName as string
+1202 set fN
+1203 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+1204 input fN = mortgage.txt
+1205 if fN's length is not bigger than 5 then skip to 1704
+1206 return value fN to getFileName
+130 file input
+***programmar password
+133 output label "Password"
+135 input password = 1989282
+136 if password is 1989282 then skip to 1381
+1381 file input amountBorrowed
+1382 file input interesRate
+1383 if amountBorrowed is larger than 1 then count ++
+***calculate the monthly payment
+140 set p = amountBorrowed
+150 set r = (interestRate / 100) /12
+160 set n = paybackPeriod * 12
+170 set monthlyPayment =  (p * ((1+r)^n) * r) / ((1+r)^n) -1)
+***output results with pertinent information
+171 true output "empty file" then skip to instruction 230
+173 output "What's the amount borrowed? " + amountBorrowed
+174 output "What's the annual interest rate? " + interestRate
+180 output "Amount borrowed = " + amountBorrowed
+190 output "Annual interest rate = " + interestRate + "%"
+200 output "Payback period = " + paybackPeriod +  "Years"
+210 output "Monthly payment = $ " + monthlyPayment [formatted 2 digits past decimal point]
+220 if file do not meet cursor then skip to 1381
+230 close file

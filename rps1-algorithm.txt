@@ -1,0 +1,409 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): to play rock, paper, scissors game.
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-userAnswer
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+3. introduction (void function)
+4. computerPlay (value returning function)
+5. userPlay (value returning function)
+6. determine winner and keep score (value returning function)
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt : Choose: [R=rock, P=paper, S=scissors, or Q=quit]: 
+-error message : is invalid input , Try again,,,
+-compete feedback : you win!
+-compete feedback : tie
+-compete feedback : Computer wins
+-output result :  Computer wins :  + computerWin +  Human wins:  + userWin
+-End message : Thanks for playing!
+-label "Computer :"
+-label " Player : "
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+char computerPlay
+string q
+int computerNumber
+char computerChoice
+char userAnswer
+char computerCompare
+char userChoice
+char determine
+string define
+int computerWin
+int userWin
+
+3. Algorithm instructions (recipe)
+***introduction (void function)
+//subprogram for introduction
+10 introduction
+***computerPlay (value returning function)
+//subprogram for computerPlay
+4005 set computerPlay
+4006 input q from console
+4007 input computerNumber from console
+4010 set computerChoice
+4015 if computerNumber is not 0 skip to 4018
+4016 computerChoice is 'R'
+4017 output q + computerChoice
+40175 skip to instruction2024
+4018 if computerNumber is not 1 skip to 4021
+4019 computerChoice is 'P'
+4020 output q + computerChoice2 
+40205 skip to instruction2024
+4021 if computerNumber is 2
+4022 computerChoice is 'S'
+4023 output q + computerChoice
+4024 return computerChoice value
+***userPlay (value returning function)
+3000 set userAnswer
+3005 output prompt "Choose: [R=rock, P=paper, S=scissors, or Q=quit]:"
+3010 input userAnswer
+3015 if userAnswer is 'R' then skip to 3019
+3016 if userAnswer is 'P' then skip to 3019
+3017 if userAnswer is 'S' then skip to 3019
+3018 if userAnswer is 'Q' then skip to 3019
+3018 output error message userAnswer + " is invalid input , Try again,,,"
+3019 return userAnswer value
+***determine winner and keep score (value returning function)
+//subprogram for determine winner and keep score
+6000 set whoWin
+6005 input computerCompare from console
+6006 input userChoice form console
+6010 if computerCompare is not 'R' skip to 6022
+6011 if userChoice is not 'R' then skip to 6015
+6012 whoWin = " tie"
+6013 output whoWin
+6014 skip to 6043
+6015 if userChoice is not 'P' then skip to 6019
+6016 whoWin = " you win!"
+6017 ouput whoWin
+6018 skip to 6043 
+6019 whoWin = " Computer wins"
+6020 ouput whoWin
+6021 skip to 6043
+6022 if computerCompare is not 'P' skip to 6033
+60225 if userChoice is not 'R' then skip to  6026
+6023 whoWin = " Computer wins"
+6024 output whoWin
+6025 skip to 6043
+6026 if userChoice is not 'P' then skip to 6030
+6027 whoWin = " tie"
+6028 ouput whoWin
+6029 skip to 6043
+6030 whoWin = " you win!"
+6031 ouput whoWin
+6032 skip to 6043
+6033 if userChoice is not 'R' then skip to 6037
+6034 whoWin = " you win!"
+6035 output whoWin
+6036 skip to 6043
+6037 if userChoice is not 'P' then skip to 6041
+6038 whoWin = " Computer wins"
+6039 ouput whoWin
+6040 skip to 6043
+6041 whoWin = " tie"
+6042 ouput whoWin 
+6043 return whoWin value
+*** main program
+10 introduction
+30 set userChoice
+35 userChoice = userPlay function
+36 if userChoice is 'Q' then skip to 66
+40 set computerCompare
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 if define is " Computer wins" then computerWin += computerWin
+63 if define is " you win!" then userWin += userWin
+64 output " Computer wins : " + computerWin + " Human wins: " + userWin + endl;
+65 skip to 35
+66 output prompt "Thanks for playing!"
+
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: single example
+input : P, P
+expected result
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : S Player : P Computer wins
+ Computer wins : 1 Human wins: 0
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : S Player : P Computer wins
+ Computer wins : 2 Human wins: 0
+
+...
+//subprogram for introduction
+10 introduction
+***computerPlay (value returning function)
+//subprogram for computerPlay
+4005 set computerPlay
+4006 Computer : 
+4007 2
+4010 set computerChoice
+4015 true then skip to 4018
+4018 true then skip to 4021
+4021 if computerNumber is 2 true
+4022 computerChoice is 'S'
+4023 output Computer : S
+4024 return computerChoice value
+***userPlay (value returning function)
+3000 set userAnswer
+3005 output prompt "Choose: [R=rock, P=paper, S=scissors, or Q=quit]:"
+3010 input userAnswer P
+3015 false
+3016 true skip to 3019
+3019 return userAnswer value
+***determine winner and keep score (value returning function)
+//subprogram for determine winner and keep score
+6000 set whoWin
+6005 input computerCompare = S
+6006 input userChoice =P
+6033 true then skip to 6037
+6037 false
+6038 whoWin = " Computer wins"
+6039 ouput whoWin
+6040 skip to 6043
+6043 return whoWin value
+*** main program
+10 introduction
+30 set userChoice
+35 userChoice = userPlay function
+36 false
+40 set computerCompare = S
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 2
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define = determine = "Computer wins"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 true then 0 = 0 + 1 
+63 false is " you win!" then userWin += userWin
+64 output " Computer wins : " + 1 + " Human wins: " + 0 + endl;
+65 skip to 35
+35 userChoice = userPlay function
+36 false
+40 set computerCompare = S
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 2
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define = determine = "Computer wins"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 true then 2 = 1 + 1 
+63 false is " you win!" then userWin += userWin
+64 output " Computer wins : " + 2 + " Human wins: " + 0 + endl;
+65 skip to 35
+...
+
+
+999 END
+
+Test case #2: 
+purpose: when user wants to exit
+input : P, P, Q
+expected result
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : S Player : P Computer wins
+ Computer wins : 1 Human wins: 0
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : S Player : P Computer wins
+ Computer wins : 2 Human wins: 0
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: q
+Thanks for playing!
+...
+//subprogram for introduction
+10 introduction
+***computerPlay (value returning function)
+//subprogram for computerPlay
+4005 set computerPlay
+4006 Computer : 
+4007 2
+4010 set computerChoice
+4015 true then skip to 4018
+4018 true then skip to 4021
+4021 if computerNumber is 2 true
+4022 computerChoice is 'S'
+4023 output Computer : S
+4024 return computerChoice value
+***userPlay (value returning function)
+3000 set userAnswer
+3005 output prompt "Choose: [R=rock, P=paper, S=scissors, or Q=quit]:"
+3010 input userAnswer P
+3015 false
+3016 true skip to 3019
+3019 return userAnswer value
+***determine winner and keep score (value returning function)
+//subprogram for determine winner and keep score
+6000 set whoWin
+6005 input computerCompare = S
+6006 input userChoice =P
+6033 true then skip to 6037
+6037 false
+6038 whoWin = " Computer wins"
+6039 ouput whoWin
+6040 skip to 6043
+6043 return whoWin value
+*** main program
+10 introduction
+30 set userChoice
+35 userChoice = userPlay function
+36 false
+40 set computerCompare = S
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 2
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define = determine = "Computer wins"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 true then 0 = 0 + 1 
+63 false is " you win!" then userWin += userWin
+64 output " Computer wins : " + 1 + " Human wins: " + 0 + endl;
+65 skip to 35
+35 userChoice = userPlay function
+36 false
+40 set computerCompare = S
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 2
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define = determine = "Computer wins"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 true then 2 = 1 + 1 
+63 false is " you win!" then userWin += userWin
+64 output " Computer wins : " + 2 + " Human wins: " + 0 + endl;
+65 skip to 35
+35 userChoice = Q
+36 true then skip to 66
+66 output prompt "Thanks for playing!"
+
+Test case #3: 
+purpose: when computer and user tie.
+input : P, P, P, Q
+expected result
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : S Player : P Computer wins
+ Computer wins : 1 Human wins: 0
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : S Player : P Computer wins
+ Computer wins : 2 Human wins: 0
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: P
+ Computer : P Player : P tie
+ Computer wins : 2 Human wins: 0
+Choose: [R=rock, P=paper, S=scissors, or Q=quit]: q
+Thanks for playing!
+...
+//subprogram for introduction
+10 introduction
+***computerPlay (value returning function)
+//subprogram for computerPlay
+4005 set computerPlay
+4006 Computer : 
+4007 2
+4010 set computerChoice
+4015 true then skip to 4018
+4018 true then skip to 4021
+4021 if computerNumber is 2 true
+4022 computerChoice is 'S'
+4023 output Computer : S
+4024 return computerChoice value
+***userPlay (value returning function)
+3000 set userAnswer
+3005 output prompt "Choose: [R=rock, P=paper, S=scissors, or Q=quit]:"
+3010 input userAnswer P
+3015 false
+3016 true skip to 3019
+3019 return userAnswer value
+***determine winner and keep score (value returning function)
+//subprogram for determine winner and keep score
+6000 set whoWin
+6005 input computerCompare = S
+6006 input userChoice =P
+6033 true then skip to 6037
+6037 false
+6038 whoWin = " Computer wins"
+6039 ouput whoWin
+6040 skip to 6043
+6043 return whoWin value
+*** main program
+10 introduction
+30 set userChoice
+35 userChoice = userPlay function
+36 false
+40 set computerCompare = S
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 2
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define = determine = "Computer wins"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 true then 0 = 0 + 1 
+63 false is " you win!" then userWin += userWin
+64 output " Computer wins : " + 1 + " Human wins: " + 0 + endl;
+65 skip to 35
+35 userChoice = userPlay function
+36 false
+40 set computerCompare = S
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 2
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define = determine = "Computer wins"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 true then 2 = 1 + 1 
+63 false is " you win!" then userWin += userWin
+64 output " Computer wins : " + 2 + " Human wins: " + 0 + endl;
+65 skip to 35
+35 userChoice = P
+36 false
+40 set computerCompare = P
+45 computerCompare = computerPlay
+46 set q = Computer :
+47 set random number of computerNumber = 1
+49 set userChoice
+50 output " Player : " + userChoice;
+60 set define =determine = " tie"
+60.05 set computerWin = 0
+60.06 set userWin = 0
+61 define = determine function
+62 false
+63 false
+64 output " Computer wins : " + 2 + " Human wins: " + 0 + endl;
+65 skip to 35
+35 userChoice = userPlay= Q
+36 true then skip to 66
+66 output prompt "Thanks for playing!"

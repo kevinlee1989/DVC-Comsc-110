@@ -1,0 +1,390 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  
+Course and section: COMSC-110-5003
+
+1. Objective (1 sentence brief description of what this will do): to play the card game war
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-answer
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. set random number to the values
+4. determine suit of the cards
+5. determine who is the winner
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt "Computer's card is a " + computerCardvalue + " of " + computerCardsuit
+-prompt "Human's card is a " + playerCardvalue + " of " + playerCardsuit
+-label : "Computer wins : " + countC + "," + " Human wins: " + countU
+-feedback "It's a tie. "
+-feedback "Humans wins!"
+-feedback "Computer wins!"
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-cardValue = (integer) determine the number of card
+-cardSuit = (integer) determine the shape of card
+-answer = (character) user answer to choose whether to stop the program or not
+-countC = (integer) determine computer win
+-countU + (integer) determine user win
+
+3. Algorithm instructions (recipe)
+***data
+1 set cardValue
+2 set cardSuit
+3 set answer
+4 set countC=0
+5 set countU=0
+***introduction 
+6 output introduction: objective, author, instructions/rules
+*** set random number to the values
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = random number from 2 to 14 [make up a number, or use a random number generator...]
+20 set computer's cardSuit = random number from 0 to 3 [make up a number, or use a random number generator...]
+30 set user's cardValue = random number from 2 to 14 [make up a number, or use a random number generator...]
+40 set user's cardSuit = random number from 0 to 3 [make up a number, or use a random number generator...]
+*** determine suit of the cards
+41 if computer's cardValue is equal to 11 then output "Computer's card is a Jack" then skip to instruction 51
+42 if computer's cardValue is equal to 12 then output "Computer's card is a Queen" then skip to instruction 51
+43 if computer's cardValue is equal to 13 then output "Computer's card is a King" then skip to instruction 51
+44 if computer's cardValue is equal to 14 then output "Computer's card is a Ace" then skip to instruction 51
+45 if computer's cardValue is less than 11 then output "Computer's card is a" + computer's cardValue 
+51 if computerCardsuit is 0 then  output " of Spades" then skip to instruction 60
+52 if computerCardsuit is 1 then  output " of Hearts" then skip to instruction 60
+53 if computerCardsuit is 2 then  output " of diomonds" then skip to instruction 60
+54 if computerCardsuit is 3 then  output " of Clubs"
+60 if user's cardValue is equal to 11 then output "Player's card is a Jack" then skip to instruction 71
+61 if user's cardValue is equal to 12 then output "Player's card is a Queen" then skip to instruction 71
+62 if user's cardValue is equal to 13 then output "Player's card is a King" then skip to instruction 71
+63 if user's cardValue is equal to 14 then output "Player's card is a Ace" then skip to instruction 71
+70 if user's cardValue is less than 11 then output "Human's card is a " + player's cardValue
+71 if playerCardsuit is 0 then  output " of Spades" then skip to instruction 80
+72 if playerCardsuit is 1 then  output " of Hearts" then skip to instruction 80
+73 if playerCardsuit is 2 then  output " of diomonds" then skip to instruction 80
+74 if playerCardsuit is 3 then  output " of Clubs"
+***determine who is the winner
+80 if computerCardvalue is not equal to playerCardvalue then skip to 110
+90 output feedback "It's a tie. "
+100 skip to instruction 150
+110 if computerCardvalue is less then playerCardvalue then skip to 140
+120 countC = countC + 1
+130 skip to instruction 150
+140 countU = countU + 1 
+150 output label  "Computer wins : " + countC + "," + " Human wins: " + countU
+***subprogram for getYesOrNo
+1600 set useranswer
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 if answer is not eqaul to y or answer is not eqaul to Y or answer is not eqaul to n or answer is not eqaul to N skip to 1610 
+180 if answer is equal to n or N then skip to instruction 190
+185 skip to instruction 7
+190 output prompt "Thank you for playing the card game war"
+
+
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose : playing again
+input value: y , 
+expected result
+Computer's card is a 10 of Hearts
+Human's card is a 4 of Clubs
+Computer wins : 1, Human wins: 0
+
+Continue? [Y/N] y
+Computer's card is a 7 of Diamonds
+Human's card is a 2 of Clubs
+Computer wins : 2, Human wins: 0
+
+Continue? [Y/N]
+...
+
+1 set cardValue
+2 set cardSuit
+3 set answer
+4 set countC
+5 set countU
+***introduction 
+6 output introduction: objective, author, instructions/rules
+*** set random number to the values
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = 10
+20 set computer's cardSuit = 1
+30 set user's cardValue = 4
+40 set user's cardSuit = 3
+*** determine suit of the cards
+41 false
+42 false
+43 false
+44 false
+45 true  "Computer's card is a" + 10
+51 false
+52 true then  output " of Hearts" then skip to instruction 60 
+60 false
+61 false
+62 false
+63 false
+70 true  then output "Human's card is a " + 4
+71 false
+72 false
+73 false
+74 true then  output " of Clubs"
+***determine who is the winner
+80 true then skip to 110
+110 false
+120 countC = 0 + 1 = 1
+130 skip to instruction 150
+150 output label  "Computer wins : " + 1 + "," + " Human wins: " +0
+***subprogram for getYesOrNo
+1600 set useranswer
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = y
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 false 
+180 false
+185 skip to instruction 7
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = 7
+20 set computer's cardSuit = 2
+30 set user's cardValue = 2
+40 set user's cardSuit = 3
+*** determine suit of the cards
+41 - 44 false
+45 true then output "Computer's card is a" + 7 
+51 false
+52false
+53 true  output " of diomonds" then skip to instruction 60
+60-63 false
+70 true then output "Human's card is a " + 2
+71-73 false
+74 true  then  output " of Clubs"
+***determine who is the winner
+80 truee then skip to 110
+110 false
+120 countC = 1 + 1 = 2
+130 skip to instruction 150
+150 output label  "Computer wins : " + 2 + "," + " Human wins: " + 0
+***subprogram for getYesOrNo
+
+...
+999 END
+
+Test case #2: 
+purpose : playing twice
+input value: n or N
+expected result
+Computer's card is a 10 of Hearts
+Human's card is a 4 of Clubs
+Computer wins : 1, Human wins: 0
+
+Continue? [Y/N] y
+Computer's card is a 7 of Diamonds
+Human's card is a 2 of Clubs
+Computer wins : 2, Human wins: 0
+
+Continue? [Y/N] n
+Thank you for playing the card game war
+...
+999 END
+
+
+1 set cardValue
+2 set cardSuit
+3 set answer
+4 set countC
+5 set countU
+***introduction 
+6 output introduction: objective, author, instructions/rules
+*** set random number to the values
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = 10
+20 set computer's cardSuit = 1
+30 set user's cardValue = 4
+40 set user's cardSuit = 3
+*** determine suit of the cards
+41 false
+42 false
+43 false
+44 false
+45 true  "Computer's card is a" + 10
+51 false
+52 true then  output " of Hearts" then skip to instruction 60 
+60 false
+61 false
+62 false
+63 false
+70 true  then output "Human's card is a " + 4
+71 false
+72 false
+73 false
+74 true then  output " of Clubs"
+***determine who is the winner
+80 true then skip to 110
+110 false
+120 countC = 0 + 1 = 1
+130 skip to instruction 150
+150 output label  "Computer wins : " + 1 + "," + " Human wins: " +0
+***subprogram for getYesOrNo
+1600 set useranswer
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = y
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 false 
+180 false
+185 skip to instruction 7
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = 7
+20 set computer's cardSuit = 2
+30 set user's cardValue = 2
+40 set user's cardSuit = 3
+*** determine suit of the cards
+41 - 44 false
+45 true then output "Computer's card is a" + 7 
+51 false
+52false
+53 true  output " of diomonds" then skip to instruction 60
+60-63 false
+70 true then output "Human's card is a " + 2
+71-73 false
+74 true  then  output " of Clubs"
+***determine who is the winner
+80 truee then skip to 110
+110 false
+120 countC = 1 + 1 = 2
+130 skip to instruction 150
+150 output label  "Computer wins : " + 2 + "," + " Human wins: " + 0
+***subprogram for getYesOrNo
+1600 set useranswer
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = n
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 false
+180 true then skip to instruction 190
+190 output prompt "Thank you for playing the card game war"
+
+999 END
+
+
+Test case #3 : 
+purpose : invalid input for useranswer 
+input values : 3 , k
+expected result 
+Computer's card is a 10 of Hearts
+Human's card is a 4 of Clubs
+Computer wins : 1, Human wins: 0
+
+Continue? [Y/N] 3
+Continue? [Y/N] k
+Continue? [Y/N] y
+Computer's card is a 7 of Diamonds
+Human's card is a 2 of Clubs
+Computer wins : 2, Human wins: 0
+
+Continue? [Y/N] n
+Thank you for playing the card game war
+
+
+1 set cardValue
+2 set cardSuit
+3 set answer
+4 set countC
+5 set countU
+***introduction 
+6 output introduction: objective, author, instructions/rules
+*** set random number to the values
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = 10
+20 set computer's cardSuit = 1
+30 set user's cardValue = 4
+40 set user's cardSuit = 3
+*** determine suit of the cards
+41 false
+42 false
+43 false
+44 false
+45 true  "Computer's card is a" + 10
+51 false
+52 true then  output " of Hearts" then skip to instruction 60 
+60 false
+61 false
+62 false
+63 false
+70 true  then output "Human's card is a " + 4
+71 false
+72 false
+73 false
+74 true then  output " of Clubs"
+***determine who is the winner
+80 true then skip to 110
+110 false
+120 countC = 0 + 1 = 1
+130 skip to instruction 150
+150 output label  "Computer wins : " + 1 + "," + " Human wins: " +0
+***subprogram for getYesOrNo
+1600 set useranswer
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = 3
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 true skip to 1610 
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = k
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 true skip to 1610 
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = y
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 false
+180 false
+185 skip to instruction 7
+7 set computer for table PlayingCard object
+8 set user for table PlayingCard object
+10 set computer's cardValue = 7
+20 set computer's cardSuit = 2
+30 set user's cardValue = 2
+40 set user's cardSuit = 3
+*** determine suit of the cards
+41 - 44 false
+45 true then output "Computer's card is a" + 7 
+51 false
+52false
+53 true  output " of diomonds" then skip to instruction 60
+60-63 false
+70 true then output "Human's card is a " + 2
+71-73 false
+74 true  then  output " of Clubs"
+***determine who is the winner
+80 truee then skip to 110
+110 false
+120 countC = 1 + 1 = 2
+130 skip to instruction 150
+150 output label  "Computer wins : " + 2 + "," + " Human wins: " + 0
+***subprogram for getYesOrNo
+1600 set useranswer
+1610 output label : "Continue ? [Y/N] "
+1620 input user answer = n
+1630 return useranswer to main function
+160 answer = getYesOrNO
+170 false
+180 true then skip to instruction 190
+190 output prompt "Thank you for playing the card game war"
+

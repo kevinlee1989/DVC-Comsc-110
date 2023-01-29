@@ -1,0 +1,269 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): The program will read names in a text file, sort them alphabetically, and output them to the screen with these specifications
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+FileName
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. read input file
+4. read and save the names
+5. sort the array
+5.5 change the case of the value to all uppercase
+6. output array in alphabetical order
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-Prompt : "Please enter an input filename [i.e. : x.txt] "
+-Label : "Sorted :"
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-s = (string) // for subprogram
+-nNames = (integer) // amount of times Names called
+-names[MAX_SIZE] = (string) //friends name
+-fileName = (string) // input fileName
+-ifstream fin
+-aNames = (string) // temporary storage for new name
+-i = (integer) // loop index
+-count = 1 (integer) // determine which is duplicate
+
+3. Algorithm instructions (recipe)
+***data
+10 set s
+20 set nNames =0
+30 set names[MAX_SIZE]
+40 set fileName
+50 set aNames
+60 set i
+70 set count
+***user introduction 
+90 output introduction: objective, author, instructions/rules
+***read input file
+100 fileName = getFile
+***subprogram for input filename
+1000 "Please enter an input filename [i.e. : x.txt] : "
+1010 input fN
+1020 if fN length is not larger than and equal to 5 then skip to instruction 1000
+1030 return value fN to main function
+*** read and save the names
+110 file input aNames
+120 count = 0
+125 i = 0
+130 if aNames is not equal to names[i] then skip to instruction 145
+140 count = 1
+145 i = i + 1
+150 if i is less than nNames skip to instruction 130
+160 if count is equal to 0 and nNames is less than MAX_SIZE then names[nNames++] = aNames
+165 nNames = nNames + 1 
+170 skip to instruction 110 until meet the cursor
+180 file close
+***sort the array
+190 sortArray(names)
+***subprogram for sort the array
+1900 i = 0
+1910 j = i + 1
+1920 if changeCase(names[i]) is larger than changeCase(names[j]) then skip to instruction 1940
+1930 skip to instruction 1970
+1940 swap = a[i]
+1950 a[i] = a[j]
+1960 a[j] = swap
+1970 if j is less than MAX_SIZE then skip to instruction 1910
+1980 i = i + 1 
+1990 if i is lager than and equal to MAX_SIZE then skip to instrcution 2010
+2000 skip to instrcution 1910
+2010 end subprogram
+***change the case of the value to all uppercase
+19200 i = 0
+19210 result[i] = toupper{names[i])
+19215 i = i+ 1 
+19220 if i is less than names length then skip to instruction 19210
+19230 retrun result to changeCase function
+***traverse array for output 
+200 output "Sorted: "
+210 ouputArray(names)
+***subprogram for output array
+2100 i = 0
+2110 output a[i]
+2120 i = i+ 1
+2130 if i is less than MAX_SIZE than skip to instruction 2110
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: simple example
+input : Kevin Hong Kim Jihoon junhoo
+expected results :
+Please enter an input filename [i.e. : x.txt] : myFriends.txt
+
+Sorted: Hong
+Jihoon
+Junhoo
+Kevin
+Kim
+
+10 set s
+20 set nNames = 0
+30 set names[MAX_SIZE]
+40 set fileName
+50 set aNames
+60 set i
+70 set count
+***user introduction 
+90 output introduction: objective, author, instructions/rules
+***read input file
+100 fileName = getFile = myFriends.txt
+***subprogram for input filename
+1000 "Please enter an input filename [i.e. : x.txt] : "
+1010 input fN = myFriends.txt
+1020 false
+1030 return value fN to main function
+*** read and save the names
+110 file input aNames = Hong
+120 count = 0
+125 i = 0
+130 true then skip to 145
+145 i = 1
+150 fasle
+160 true than MAX_SIZE then names[0] = Hong
+165 nNames =1 
+170 skip to instruction 110 until meet the cursor
+110 file input aNames = Kevin
+120 count = 0
+125 i = 0
+130 true then skip to 145
+145 i = 1
+150 fasle
+160 true than MAX_SIZE then names[1] = Kevin
+165 nNames =2
+170 skip to instruction 110 until meet the cursor
+110 file input aNames = Kim
+120 count = 0
+125 i = 0
+130 true then skip to instruction 145
+145 i = 1
+150 true skip to instruction 130
+130 true then skip to instruction 145
+145 i = 2
+150 false
+160 if count is equal to 0 and nNames is less than MAX_SIZE then names[2] = Kim
+165 nNames = 3
+170 skip to instruction 110 until meet the cursor
+110 file input aNames = Jihoon
+120 count = 0
+125 i = 0
+130 true then skip to instruction 145
+145 i = 1
+150 true skip to instruction 130
+130 true then skip to instruction 145
+145 i = 2
+150 true skip to instruction 130
+130 true then skip to instruction 145
+145 i = 3
+150 false
+160 if count is equal to 0 and nNames is less than MAX_SIZE then names[3] = Jihoon
+165 nNames = 4
+170 skip to instruction 110 until meet the cursor
+110 file input aNames = junhoo
+120 count = 0
+125 i = 0
+130 true then skip to instruction 145
+145 i = 1
+150 true skip to instruction 130
+130 true then skip to instruction 145
+145 i = 2
+150 true skip to instruction 130
+130 true then skip to instruction 145
+145 i = 3
+150 true skip to instruction 130
+130 true then skip to instruction 145
+145 i = 4
+150 false
+160 if count is equal to 0 and nNames is less than MAX_SIZE then names[4] = Junhoo
+165 nNames = 5
+170 meet cursor
+180 file close
+***sort the array
+190 sortArray(names)
+***subprogram for sort the array
+1900 i = 0
+1910 j = 1
+1920 if changeCase(names[0]) =Hong is larger than changeCase(names[1]) = Kevin false
+1930 skip to instruction 1970
+1970 true then skip to instruction 1910
+1910 j = 2
+1920 if changeCase(names[0]) =Hong is larger than changeCase(names[2]) = Kim  false
+1930 skip to instruction 1970
+1970 true then skip to instruction 1910
+1910 j = 3
+1920 if changeCase(names[0]) =Hong is larger than changeCase(names[3]) = Jihoon  false
+1930 skip to instruction 1970
+1970 true then skip to instruction 1910
+1910 j = 4
+1920 if changeCase(names[0]) =Hong is larger than changeCase(names[4]) = Junhoo  false
+1930 skip to instruction 1970
+1970 false
+1980 i = 1
+1990 false
+2000 skip to instrcution 1910
+1910 j = 2
+1920 if changeCase(names[1]) = Kevin is larger than changeCase(names[2]) = Kim false
+1930 skip to instruction 1970
+1970 if j is less than MAX_SIZE then skip to instruction 1910
+1910 j = 3
+1920 if changeCase(names[1]) = Kevin is larger than changeCase(names[3]) = Jihoon true
+1940 swap = names[1]
+1950 names[1] = names[3]
+1960 names[3] = swap
+1970 true then skip to instruction 1910
+1910 j = 4
+1920 if changeCase(names[1]) = Jihoon is larger than changeCase(names[4]) = Junhoo  false
+1930 skip to instruction 1970
+1980 i = 2
+1990 false
+2000 skip to instrcution 1910
+1910 j = 3
+1920 if changeCase(names[2]) =Kim is larger than changeCase(names[3]) = Kevin  false
+1930 skip to instruction 1970
+1970 true then skip to instruction 1910
+1910 j = 4
+1920 if changeCase(names[2]) =Kim is larger than changeCase(names[4]) = Junhoo  true
+1940 swap = names[2]
+1950 names[2] = names[4]
+1960 names[4] = swap
+1970 false
+1980 i = 3
+1990 false
+2000 skip to instrcution 1910
+1910 j = 4
+1920 if changeCase(names[3]) =Kevin is larger than changeCase(names[4]) = Kim  false
+1930 skip to instruction 1970
+1970 false
+2010 end subprogram
+***traverse array for output 
+200 output "Sorted: "
+210 ouputArray(names)
+***subprogram for output array
+2100 i = 0
+2110 output names[0] = Hong
+2120 i = 1
+2130 true skip to instruction 2110
+2110 output names[1] = Jihoon
+2120 i = 2
+2130 true skip to instruction 2110
+2110 output names[2] = Junhoo
+2120 i = 3
+2130 true skip to instruction 2110
+2110 output names[3] = Kevin
+2120 i = 4
+2130 true skip to instruction 2110
+2110 output names[4] = Kim
+2120 i = 5
+2130 false
+
+Test case #2: 

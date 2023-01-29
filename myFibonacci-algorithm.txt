@@ -1,0 +1,184 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): The program will calculate a value in the Fibonacci number series.
+
+2. Requirements (any and all requirements organized by input, processing, output, data): 
+
+INPUT (any data items to be input): 
+userIndex
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+2.5 prompt the user
+3.the Fibonacci number for index 0 or 1
+4.The Fibonacci number for any other index
+5.output fibonacci number until userIndex
+
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt : Enter an index [0 or greater]:
+-label : number[i].num + " "
+-label : "The Fibonacci number at index " + userIndex +" is " + number[userIndex].num + "."
+
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+objective = (string) "The program will calculate a value in the Fibonacci number series.\n"; //program objective
+instructions = (string) "Enter an index for how many Fibonacci number to ouptput and it has to be greater than 0..\n\n"; //user instructions 
+deque<Number> number; // create an empty list 
+userIndex = (integer) user selected amount of number
+i = (integer) for index
+
+3. Algorithm instructions (recipe)
+***data
+set structure Number
+set num // for each numbers
+10 set objective
+20 set instructions
+30 set collection number for an empty list
+40 set userIndex
+50 set i
+***user introduction 
+60 output introduction: objective, author, instructions/rules
+***prompt the user
+70 output prompt "Enter an index [0 or greater]: "
+80 input userIndex
+***the Fibonacci number for index 0 or 1
+90 set i = 0
+100 number[i].num = i
+110 i = i + 1 
+120 if i is less than 2 then skip to instruction 100
+***The Fibonacci number for any other index
+130 set i = 2 
+140 number[i].num = number[i-2].num + number[i-1].num
+150 i = i + 1
+160 if i is less than userIndex then skip to instruction 140
+***output fibonacci number until userIndex
+170 set i = 0 
+180 output label number[i].num
+190 i = i + 1
+200 if i is less than and equal to userIndex then skip to instruction 180
+210 output label "The Fibonacci number at index " + userIndex +" is " + number[userIndex].num + "."
+
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: simple example
+input : 6
+expected results :
+
+Enter an index [0 or greater]: 6
+0 1 1 2 3 5 8
+The Fibonacci number at index 6 is 8.
+...
+***data
+set structure Number
+set num // for each numbers
+10 set objective
+20 set instructions
+30 set collection number for an empty list
+40 set userIndex
+50 set i
+***user introduction 
+60 output introduction: objective, author, instructions/rules
+***prompt the user
+70 output prompt "Enter an index [0 or greater]: "
+80 input userIndex = 6
+***the Fibonacci number for index 0 or 1
+90 set i = 0
+100 number[0].num = 0
+110 i = 1
+120 true then skip to instruction 100
+100 number[1].num = 1
+110 i = 2
+120 false
+***The Fibonacci number for any other index
+130 set i = 2 
+140 number[2].num = number[1].num + number[0].num = 1
+150 i = 3
+160 true then skip to instruction 140
+140 number[3].num = number[1].num + number[2].num = 2
+150 i = 4
+160 true then skip to instruction 140
+140 number[4].num = number[2].num + number[3].num = 3
+150 i = 5
+160 true then skip to instruction 140
+140 number[5].num = number[4].num + number[3].num = 5
+150 i = 6
+160 true then skip to instruction 140
+140 number[6].num = number[5].num + number[4].num = 8
+150 i = 7
+160 false
+***output fibonacci number until userIndex
+170 set i = 0 
+180 output label number[0].num = 0
+190 i = 1
+200 truethen skip to instruction 180
+180 output label number[0].num = 1
+190 i = 2
+200 truethen skip to instruction 180
+180 output label number[0].num = 1
+190 i = 3
+200 truethen skip to instruction 180
+180 output label number[0].num = 2
+190 i = 4
+200 truethen skip to instruction 180
+180 output label number[0].num = 3
+190 i = 5
+200 truethen skip to instruction 180
+180 output label number[0].num = 5
+190 i = 6
+200 truethen skip to instruction 180
+180 output label number[0].num = 8
+190 i = 7
+200 false
+210 output label "The Fibonacci number at index " + 6 +" is " + 8 + "."
+
+999 END
+
+Test case #2: 
+purpose: putting 0
+input : 0
+expected results :
+
+Enter an index [0 or greater]: 0
+0
+The Fibonacci number at index 0 is 0
+...
+
+***data
+set structure Number
+set num // for each numbers
+10 set objective
+20 set instructions
+30 set collection number for an empty list
+40 set userIndex
+50 set i
+***user introduction 
+60 output introduction: objective, author, instructions/rules
+***prompt the user
+70 output prompt "Enter an index [0 or greater]: "
+80 input userIndex =0
+***the Fibonacci number for index 0 or 1
+90 set i = 0
+100 number[0].num = 0
+110 i = 1
+120 ture then skip to instruction 100
+100 number[1].num = 1
+110 i = 2
+120 false
+***The Fibonacci number for any other index
+130 set i = 2 
+140 number[2].num = number[1].num + number[0].num = 1
+150 i = 3
+160 false
+***output fibonacci number until userIndex
+170 set i = 0 
+180 output label number[0].num = 0
+190 i = 1
+200 false
+210 output label "The Fibonacci number at index " + 0 +" is " + 0 + "."

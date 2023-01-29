@@ -1,0 +1,173 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): 
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-s
+-fN
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. read input file
+4. encode the sentence
+5. output result
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt "Please enter an input filename [i.e. : x.txt] : "
+-label : " File was empty . "
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-string objective = "The program will be a template for C++ programs and to test code.\n"; //program objective
+-string instructions = "Just watch...\n\n"; //user instructions 
+-int i; //index loop
+-string s; // user selected sentence
+-string fileName; //file name
+-ifstream fin; //fin
+-int count = 0; // determine whether file is empty
+
+
+3. Algorithm instructions (recipe)
+***data
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+65 set count
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN
+805 if fN's length is not bigger than 5 then skip to 1704
+806 return value fN to getFileName
+90 file input s
+100 set i = 0
+110 add 1 to order of i letter 
+120 add 1 to i
+125 add 1 to count 
+130 if i is less than s length then skip to instruction 100
+135 if count is 0 then output " File was empty . " and skip to instruction 150
+140 output s 
+150 end file
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose : general example
+input : Hello World
+expected result :
+Please enter an input filename [i.e. : x.txt] : nsaEncode.txt
+Ifmmp-!Xpsme
+
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN = nsaEncode.txt
+805 false
+806 return value fN to getFileName
+90 file input s = Hello World 
+100 set i = 0
+110 add 1 to order of i letter = I
+120 add 1 to i =1 
+130 true then skip to instruction 100
+100 set i = 1
+110 add 1 to order of i letter = f
+120 add 1 to i =2
+130 true then skip to instruction 100
+100 set i = 2
+110 add 1 to order of i letter = m
+120 add 1 to i =3
+130 true then skip to instruction 100
+100 set i = 3
+110 add 1 to order of i letter = m
+120 add 1 to i =4
+130 true then skip to instruction 100
+100 set i = 4
+110 add 1 to order of i letter = p
+120 add 1 to i =5 
+130 true then skip to instruction 100
+100 set i = 5
+110 add 1 to order of i letter = -!
+120 add 1 to i =6 
+130 true then skip to instruction 100
+100 set i = 6
+110 add 1 to order of i letter = X
+120 add 1 to i =7 
+130 true then skip to instruction 100
+100 set i = 7
+110 add 1 to order of i letter = p
+120 add 1 to i =8
+130 true then skip to instruction 100
+100 set i = 8
+110 add 1 to order of i letter = s
+120 add 1 to i =9
+130 true then skip to instruction 100
+100 set i = 9
+110 add 1 to order of i letter = m
+120 add 1 to i =10
+130 true then skip to instruction 100
+100 set i = 10
+110 add 1 to order of i letter = e
+120 add 1 to i =11
+130 false
+135 false 
+140 output s 
+150 end program
+
+999 END
+
+Test case #2: 
+purpose : when file has no data
+input :
+Please enter an input filename [i.e. : x.txt] : nsaEncode.txt
+ File was empty .
+
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN = nsaEncode.txt
+805 false
+806 return value fN to getFileName
+90 file input s
+100 set i = 0
+110 add 1 to order of i letter 
+120 add 1 to i
+125 count = 0
+130 false
+135 true then output " File was empty . " and skip to instruction 150 
+150 end file

@@ -1,0 +1,326 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): 
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-r
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. read input file
+4. encode the sentence
+5. output result
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-label : " File was empty . "
+-instruction : "Decode the entered text so that each character is converted to the next character in the ASCII code. That is, convert 'B' to 'A', '5' to '4', '+' to '*', etc. So the word Ifmmp will appear as Hello in decoded form. Remember a line of text contains multiple characters, and each character has an ASCII value, and by subtracting 1 to that ASCII value results in the next character in the ASCII table.
+-prompt : "Enter a line of text:";
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-string objective = "The program will be a template for C++ programs and to test code.\n"; //program objective
+-string instructions = "Decode the entered text so that each character is converted to the next character in the ASCII code. That is, convert 'B' to 'A', '5' to '4', '+' to '*', etc. So the word Ifmmp will appear as Hello in decoded form. Remember a line of text contains multiple characters, and each character has an ASCII value, and by subtracting 1 to that ASCII value results in the next character in the ASCII table..\n\n"; //user instructions 
+-int i; //index loop
+-ifstream fin; //fin
+-int count = 0; // determine whether file is empty
+-int r; //user wanted line
+-string first;
+-string second;
+-string third;
+-string forth;
+-string secret = "secret.txt"; //output file
+
+3. Algorithm instructions (recipe)
+***data
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+65 set count
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set secret = "secret.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 open secret file
+90 file input =first
+100 set i = 0
+110 add -1 to order of i letter 
+120 add 1 to i
+125 add 1 to count 
+130 if i is less than first length then skip to instruction 100
+150 file input =second
+160 set i = 0
+170 add -1 to order of i letter 
+180 add 1 to i
+195 add 1 to count 
+200 if i is less than second length then skip to instruction 160
+220 file input =third
+230 set i = 0
+240 add -1 to order of i letter 
+250 add 1 to i
+265 add 1 to count 
+270 if i is less than third length then skip to instruction 230
+290 file input =forth
+300 set i = 0
+310 add -1 to order of i letter 
+320 add 1 to i
+325 add 1 to count 
+330 if i is less than forth length then skip to instruction 300
+3301 if r is larger than 4 then output "there are no text" and then add 1 to count and skip to instruction 450
+350 if count is 0 then output " File was empty . " and skip to instruction 450
+360 if r is equal to 1 then output first and skip to instruction 450
+370 if r is equal to 2 then output second and skip to instruction 450
+380 if r is equal to 3 then output third and skip to instruction 450
+390 if r is equal to 4 then output forth and skip to instruction 450
+450 close input file
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose : general example
+input : Ifmmp!Xpsme, 1
+expected result :
+
+Enter a line of text:1
+Hello World
+
+***data
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+65 set count
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set secret = "secret.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 open file secret
+90 file input s = Ifmmp!Xpsme
+100 set i = 0
+110 add -1 to order of i letter = H
+120 add 1 to i =1 
+130 true then skip to instruction 100
+100 set i = 1
+110 add -1 to order of i letter = e
+120 add 1 to i =2
+130 true then skip to instruction 100
+100 set i = 2
+110 add -1 to order of i letter = l
+120 add 1 to i =3
+130 true then skip to instruction 100
+100 set i = 3
+110 add -1 to order of i letter = l
+120 add 1 to i =4
+130 true then skip to instruction 100
+100 set i = 4
+110 add -1 to order of i letter = o
+120 add 1 to i =5 
+130 true then skip to instruction 100
+100 set i = 5
+110 add -1 to order of i letter =  
+120 add 1 to i =6 
+130 true then skip to instruction 100
+100 set i = 6
+110 add -1 to order of i letter = W
+120 add 1 to i =7 
+130 true then skip to instruction 100
+100 set i = 7
+110 add -1 to order of i letter = o
+120 add 1 to i =8
+130 true then skip to instruction 100
+100 set i = 8
+110 add -1 to order of i letter = r
+120 add 1 to i =9
+130 true then skip to instruction 100
+100 set i = 9
+110 add -1 to order of i letter = l
+120 add 1 to i =10
+130 true then skip to instruction 100
+100 set i = 10
+110 add -1 to order of i letter = d
+120 add 1 to i =11
+130 false
+150 file input 
+160 set i = 0
+170 add -1 to order of i letter 
+180 add 1 to i =1 
+195 add 1 to count =1 
+200 false
+220 file input =third = 
+230 set i = 0
+240 add -1 to order of i letter =
+250 add 1 to i= 1
+265 add 1 to count = 1
+270 false
+290 file input =forth
+330 false
+3301 false
+350 false
+360 true then output first and skip to instruction 450
+450 close input file
+
+
+999 END
+
+Test case #2: 
+purpose : when file has no data
+input :
+Please enter an input filename [i.e. : x.txt] : nsaEncode.txt
+Enter a line of text:2
+ File was empty .
+
+***data
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+65 set count
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set secret = "secret.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 open file secret
+90 file input =
+100 set i = 0
+110 add 1 to order of i letter 
+120 add 1 to i
+125 add 1 to count 
+130 false
+150 file input =
+160 set i = 0
+170 add 1 to order of i letter 
+180 add 1 to i
+195 add 1 to count 
+200 false
+220 file input =
+230 set i = 0
+240 add 1 to order of i letter 
+250 add 1 to i
+265 add 1 to count 
+270 false
+290 file input =
+300 set i = 0
+310 add 1 to order of i letter 
+320 add 1 to i
+325 add 1 to count 
+330 false
+3301 false
+350 true output " File was empty . " and skip to instruction 440
+450 close input file
+
+999 END
+
+Test case #3 : 
+purpose : when they put empty line
+input : Hello World ,   7
+expected result
+Please enter an input filename [i.e. : x.txt] : nsaEncode.txt
+Enter a line of text:8
+ there are no line
+
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+65 set count
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set secret = "secret.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 open file secert
+90 file input s = Ifmmp!Xpsme
+100 set i = 0
+110 add -1 to order of i letter = H
+120 add 1 to i =1 
+130 true then skip to instruction 100
+100 set i = 1
+110 add -1 to order of i letter = e
+120 add 1 to i =2
+130 true then skip to instruction 100
+100 set i = 2
+110 add -1 to order of i letter = l
+120 add 1 to i =3
+130 true then skip to instruction 100
+100 set i = 3
+110 add -1 to order of i letter = l
+120 add 1 to i =4
+130 true then skip to instruction 100
+100 set i = 4
+110 add -1 to order of i letter = o
+120 add 1 to i =5 
+130 true then skip to instruction 100
+100 set i = 5
+110 add -1 to order of i letter =  
+120 add 1 to i =6 
+130 true then skip to instruction 100
+100 set i = 6
+110 add -1 to order of i letter = W
+120 add 1 to i =7 
+130 true then skip to instruction 100
+100 set i = 7
+110 add -1 to order of i letter = o
+120 add 1 to i =8
+130 true then skip to instruction 100
+100 set i = 8
+110 add -1 to order of i letter = r
+120 add 1 to i =9
+130 true then skip to instruction 100
+100 set i = 9
+110 add -1 to order of i letter = l
+120 add 1 to i =10
+130 true then skip to instruction 100
+100 set i = 10
+110 add -1 to order of i letter = d
+120 add 1 to i =11
+130 false
+150 file input =second
+160 set i = 0
+170 add 1 to order of i letter =
+180 add 1 to i =1 
+195 add 1 to count =1 
+200 false
+220 file input =third = 
+230 set i = 0
+240 add 1 to order of i letter =
+250 add 1 to i= 1
+265 add 1 to count = 1
+270 false
+290 file input =forth
+330 false
+3301 true then output "there are no text" and then add 1 to count and skip to instruction 450
+450 close input file
+

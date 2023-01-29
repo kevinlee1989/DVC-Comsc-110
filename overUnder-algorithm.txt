@@ -1,0 +1,152 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): play a game where the user guesses a number from 1 to 100 
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-userGuess
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. game loop: prompt the userGuess, input userGuess, provide feedback
+4. end of game
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules: "I'm thinking of a number from 1 to 100. What is it? "
+-prompt : "What is your guess [1-100 or 0 to Exit]? "
+-guess feedback : "That's right -- it's target"
+-guess feedback : "That's too high -- guess again"
+-guess feedback : "That's too low -- guess again"
+-error message : "I really want a number from 1 to 100."
+-end of game message : "Thanks for playing overUnder game with me!"
+-file output: "last player took " + count + " guesses to guess the correct number.";
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-userGuess = (integer) each user guess of target number
+-target = (integer) the number to be guessed
+-count = (integer) how many guesses user tried
+
+3. Algorithm instructions (recipe)
+***data
+10 set target = random number from 1 to 100 [make up a number, or use a random number generator...]
+***introduction 
+30 output introduction: objective, author, instructions/rules
+***
+30 output prompt "What is your guess [1-100 or 0 to Exit]? "
+40input userGuess
+45 add 1 to count
+50 if userGuess is equal to 0 then skip to instruction 170
+60 if userGuess is greater than or equal to and userGuess is less then or equal to 100 then skip to instruction 90
+70 output "I really want a number from 1 to 100."
+80 skip to instruction 30
+90 if userGuess is not equal to target then 120
+100 output "That's right -- it's target"
+110 skip to instruction 163
+120 if userGuess is less then target then skip to instruction 150
+130 output prompt "That's too high -- guess again"
+140 skip to instruction 30
+150 output prompt "That's too low -- guess again"
+160 skip to instruction 30
+163 file output "last player took " + count + " guesses to guess the correct number."
+***end of game
+170 output "Thanks for playing overUnder game with me!"
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+Purpose: user selects to exit before guessing target
+Inputs: target = 56, userGuess = 0
+Expected Results: 
+...
+What is your guess [1-100 or 0 to Exit]? 0
+Thanks for playing overUnder game with me!
+
+10 target = 56
+20 Objective : play a game where the user guesses a number from 1 to 100 
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 100. What is it? 
+30 What is your guess [1-100 or 0 to Exit]?
+40 userGuess = 0
+45 add 1 to count
+50 true
+170 Thanks for playing overUnder game with me!
+
+999 END
+
+Test case #2: 
+Purpose: user guesses the target
+Inputs: target = 56, userGuess = 56
+Expected Results: 
+...
+What is your guess [1-100 or 0 to Exit]? 56
+"That's right -- it's 56"
+Thanks for playing overUnder game with me!
+
+10 target = 56
+20 Objective : play a game where the user guesses a number from 1 to 100 
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 100. What is it? 
+30 What is your guess [1-100 or 0 to Exit]?
+40 userGuess = 56
+45 add 1 to count
+50 false 
+60 true
+90 false
+100 That's right -- it's 56
+110 skip to instruction 163
+163 file output "last player took " + 1 + " guesses to guess the correct number."
+
+999 END
+
+Test case #3: 
+Purpose: user guesses the number lower than target
+Inputs: target = 56, userGuess = 55
+Expected Results: 
+...
+What is your guess [1-100 or 0 to Exit]? 55
+That's too low -- guess again
+What is your guess [1-100 or 0 to Exit]?
+...
+
+10 target = 56
+20 Objective : play a game where the user guesses a number from 1 to 100 
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 100. What is it? 
+30 What is your guess [1-100 or 0 to Exit]?
+40 userGuess = 55
+45 add 1 to count
+50 false
+60 true
+90 true skip to instruction 120
+120 true skip to instruction 150
+150 output prompt "That's too low -- guess again"
+160 skip to instruction 30
+30 ...
+999 END
+
+Test case #4 :
+Purpose: user guesses the number lower than target
+Inputs: target = 56, userGuess = 101
+Expected Results: 
+...
+What is your guess [1-100 or 0 to Exit]? 101
+I really want a number from 1 to 100.
+What is your guess [1-100 or 0 to Exit]?
+...
+
+10 target = 56
+20 Objective : play a game where the user guesses a number from 1 to 100 
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 100. What is it? 
+30 What is your guess [1-100 or 0 to Exit]?
+40 userGuess = 101
+45 add 1 to count
+50 false
+60 false
+70 output prompt "I really want a number from 1 to 100."
+80 skip to instruction 30
+30 ...

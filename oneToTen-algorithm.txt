@@ -1,0 +1,147 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number: Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-5003
+
+1. Objective (1 sentence brief description of what this will do): play a game where user will guess a number from 1 to 10
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-userGuess
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. game loop: prompt the userGuess, input userGuess, provide feedback
+4. end of game	
+
+[Notes: 
+What do we test? and in what order do we test it?
+user wants to exit game [userGuess =0]
+invalid values [ valid values for userGuess = 1 to 10]
+whether user guesses target [userGuess = target]
+user guess incorrectly
+]
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules: "I'm thinking of a number from 1 to 10. What is it? "
+-prompt : "What is your guess [1-10 or 0 to Exit]? "
+-guess feedback : "You guessed it!"
+-error message : "I really want a number from 1 to 10."
+-guess feedback: "Try again..."
+-end of game message : "Thanks for playing oneToTen game with me!"
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-userGuess = (integer) each user guess of target number
+-target = (integer) the number to be guessed
+
+3. Algorithm instructions (recipe)
+***data definition
+10 set target = random number from 1 to 10 [make up a number, or use a random number generator...]
+***user introduction 
+20 output introduction: objective, author, instructions/rules
+***game loop: prompt the userGuess, input userGuess, provide feedback
+30 output prompt "What is your guess [1-10 or 0 to Exit]? "
+40 input userGuess
+50 if userGuess is equal to 0 then skip to instruction 140
+60 if userGuess is greater than or equal to 1 and userGuess is less then or equal to 10 then skip instruction 90
+70 output "I really want a number from 1 to 10."
+80 skip to instruction 30
+90 if userGuess is not equal to target then 120
+100 output "You guessed it!"
+110 skip to instruction 140
+120 output "Try again..."
+130 skip to instruction 30
+***end of game 
+140 output  "Thanks for playing oneToTen game with me!"
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1:
+Purpose: user selects to exit before guessing target
+Inputs: target = 7, userGuess = 0
+Expected Results: 
+...
+What is your guess [1-10 or 0 to Exit]? 0
+Thanks for playing oneToTen game with me!
+
+10 target = 7
+20 Objective : play a game where user will guess a number from 1 to 10
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 10. What is it? 
+30 What is your guess [1-10 or 0 to Exit]? 
+40 userGuess = 0
+50 True
+140 Thanks for playing oneToTen game with me!
+999 END
+
+Test case #2: 
+Purpose: user guesses the target
+Inputs: target = 7, userGuess = 7
+Expected Results: 
+...
+What is your guess [1-10 or 0 to Exit]? 7
+You guessed it!
+Thanks for playing oneToTen game with me!
+
+10 target = 7
+20 Objective : play a game where user will guess a number from 1 to 10
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 10. What is it?
+30 What is your guess [1-10 or 0 to Exit]? 
+40 userGuess = 7
+50 false
+60 true
+90 false
+100 "You guessed it!"
+110 skip to instruction 140
+140 Thanks for playing oneToTen game with me!
+999 END
+
+Test case #3:
+Purpose: invalid input
+Inputs: target = 7, userGuess = 11
+Expected Results: 
+...
+What is your guess [1-10 or 0 to Exit]? 11
+I really want a number from 1 to 10.
+What is your guess [1-10 or 0 to Exit]?
+...
+
+10 target = 7
+20 Objective : play a game where user will guess a number from 1 to 10
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 10. What is it?
+30 What is your guess [1-10 or 0 to Exit]?
+40 userGuess = 11
+50 false
+60 false
+70 "I really want a number from 1 to 10."
+80 skip to instruction 30
+30 What is your guess [1-10 or 0 to Exit]? 
+...
+...
+999 END
+
+Test case #4:
+Purpose: user guesses the target incorrectly
+Inputs: target = 7, userGuess = 5
+Expected Results: 
+...
+What is your guess [1-10 or 0 to Exit]? 5
+Try again...
+What is your guess [1-10 or 0 to Exit]?
+
+10 target = 7
+20 Objective : play a game where user will guess a number from 1 to 10
+Author: Kevin Jaewoo Lee 1989282
+instructions : I'm thinking of a number from 1 to 10. What is it?
+30 What is your guess [1-10 or 0 to Exit]?
+40 userGuess = 5
+50 false
+60 true then skip to 90
+90 true then skip to 120
+120 "Try again..."
+130 skip to instruction 30
+30 What is your guess [1-10 or 0 to Exit]?
+...

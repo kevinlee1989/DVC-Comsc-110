@@ -1,0 +1,484 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): The program will Input any number of movie titles and year each movie was created from file movieData.txt and store on a list. 
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-userGuessYear
+-userAnswer
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3.read input file and create a list
+4.check whether the user guess right or wrong and ask to play it again or add another movie to the list
+5.output sorted movie title and year
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt : "Guess what year is " + movie[random].title +" movie was made? [valid input : numbers]: "
+-feedback : " You guess it wrong! it was made in " + movie[random].year
+-feedback : " You are correct! "
+-prompt : "Do you want to play again or want to add another movie to the list? "
+-error message : " I can not understand whether you want to play again or add another movie! " 
+-label : movie[i].title + "  " + movie[i].year
+
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-objective = (text) "The program will Input any number of movie titles and year each movie was created from file movieData.txt and store on a list.\n" //program objective
+-instructions = (text) "Guess what year that movie was made only by numbers.\n\n" //user instructions 
+-deque<Movies> movie = (collection) // create an empty collection 
+-userGuessYear = (integer) // user guessing the year of the movie which is chosen by the random generator
+-int result (integer) //determine whether they got the question right or wrong
+-answer (character) //user answer whether they want to play again or add the another movie to the list 
+- i (integer)//for index loop
+-ifstream fin //for file input
+-fileName = "movieData.txt" (text) //for open the file
+-Movies amovie (structure) // updation a movie from input file 
+-userGuessYear (integer) // user guessing the year of the movie which is chosen by the random generator
+-result (integer) //determine whether user guess is right or wrong
+-userAnswer (character) //user answer to play again or add another movie to the list
+-resultAnswer (character) // value return to main function
+-j (integer)// inner loop index
+-swapy (integer) //used for sort swap
+-string swapt (text) //used for sort swap
+
+
+
+3. Algorithm instructions (recipe)
+***data
+10 set sturct Movies containing title and year field
+20 set deque<Movies> movie
+30 set userGuessYear
+40 set result
+50 set answer
+60 set i
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file and create a list
+80 subprogram inputMovies(movie)
+***function void inputMovies(deque<Movies>& movie)
+800 set ifstream fin
+801 set fileName = "movieData.txt"
+802 set Movies amovie 
+803 open the file name FileName
+804 file input amovie.title
+805 file input amovie.year
+806 add a value amovie to a end of the movie structure
+807 if file meet the cursor then end subprogram
+90 random = get random number 
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear
+1001 set result
+1002 output prompt "Guess what year is " + movie[random].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear
+1004 if movie[random].year is equal to userGuess year then result = 0
+1005 if movie[random].year is not equal to userGuess year then result = 1
+1006 return the result value to the main function
+101 if result is equal to 0 then skip to instruction 104
+102 output feedback " You guess it wrong! it was made in " + movie[random].year
+103 skip to instruction 105
+104 output feedback " You are correct! "
+105 answer = yOrN() subprogram
+***function char yOrN()
+10501 set userAnswer
+10502 set resultAnswer
+10503 output prompt "Do you want to play again or want to add another movie to the list? "
+10504 input userAnswer
+10505 if userAnswer is not equal to y and userAnswer is not equal to Y then skip to instruction 10508
+10506 resultAnswer = y
+10507 skip to instruction 10513
+10508 if userAnswer is not equal to n and userAnswer is not equal to N then skip to instruction 10511
+10509 resultAnswer = n
+10510 skip to instruction 10513
+10511 output error message " I can not understand whether you want to play again or add another movie! "
+10512 skip to instruction 10503
+10513 return the value of resultAnswer
+106 if answer is equal to y or answer is equal to Y then skip to instruction 90
+107 outputList(movie) subprogram
+*** function outputList(deque<Movies>& movie)
+1071 set i
+1072 sortList(movie) subprogram
+***function sortList(deque<Movies>& movie)
+107201 set i
+107202 set j
+107203 set swapy
+107204 set swapt
+107205 i =0
+107206 j =i +1
+107207 if movie[i].year is less than and equal to movie[j].year then skip to instruction 107214
+107208 swapy = movie[i].year
+107209 movie[i].year = movie[j].year   
+107210 movie[j].year = swapy
+107211 swapt = movie[i].title
+107212 movie[i].title = movie[j].title 
+107213 movie[j].title = swapt
+1072135 j = j + 1
+107214 if j is less than movie size then skip to instruction 107206
+107215 i = i+ 1
+107216 if i is less than movie size then skip to instruction 107206
+107217 end subprogram
+1073 set i = 0
+1074 output label movie[i].title + "  " + movie[i].year
+1075 i = i + 1
+1076 if i is less than movie size then skip to instruction 1074
+1077 end subprogram
+108 end program
+
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: simple example correct 
+input : 1939 , y
+input file:
+"Titanic"
+1997
+
+"Casablanca"
+1942
+
+"Gone with the wind"
+1939
+
+expected results :
+
+Guess what year is "Gone with the wind" movie was made? [valid input : numbers]: 1939
+ You are correct!
+Do you want to play again or want to add another movie to the list? y
+Guess what year is "Casablanca" movie was made? [valid input : numbers]:
+
+999 END
+10 set sturct Movies containing title and year field
+20 set deque<Movies> movie
+30 set userGuessYear
+40 set result
+50 set answer
+60 set i
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file and create a list
+80 subprogram inputMovies(movie)
+***function void inputMovies(deque<Movies>& movie)
+800 set ifstream fin
+801 set fileName = "movieData.txt"
+802 set Movies amovie 
+803 open the file name FileName
+804 file input amovie.title
+805 file input amovie.year
+806 add a value amovie to a end of the movie structure
+807 if file meet the cursor then end subprogram
+90 random = get random number = 2
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear 
+1001 set result
+1002 output prompt "Guess what year is " + movie[2].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear = 1939
+1004 true then result = 0
+1005 false
+1006 return the result value = 0 to the main function
+101 true then skip to instruction 104
+104 output feedback " You are correct! "
+105 answer = yOrN() subprogram
+***function char yOrN()
+10501 set userAnswer
+10502 set resultAnswer
+10503 output prompt "Do you want to play again or want to add another movie to the list? "
+10504 input userAnswer = y
+10505 false
+10506 resultAnswer = y
+10507 skip to instruction 10513
+10513 return the value of resultAnswer = y
+106 true then skip to instruction 90
+90 random = get random number = 1
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear 
+1001 set result
+1002 output prompt "Guess what year is " + movie[1].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear = ...
+...
+
+END 999
+
+
+Test case #2: 
+purpose: simple example userGuess wrong
+input : 1938 , y
+input file:
+"Titanic"
+1997
+
+"Casablanca"
+1942
+
+"Gone with the wind"
+1939
+
+expected results :
+
+Guess what year is "Gone with the wind" movie was made? [valid input : numbers]: 1938
+ You guess it wrong! it was made in 1939
+Do you want to play again or want to add another movie to the list? y
+Guess what year is "Casablanca" movie was made? [valid input : numbers]:
+
+999 END
+
+10 set sturct Movies containing title and year field
+20 set deque<Movies> movie
+30 set userGuessYear
+40 set result
+50 set answer
+60 set i
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file and create a list
+80 subprogram inputMovies(movie)
+***function void inputMovies(deque<Movies>& movie)
+800 set ifstream fin
+801 set fileName = "movieData.txt"
+802 set Movies amovie 
+803 open the file name FileName
+804 file input amovie.title
+805 file input amovie.year
+806 add a value amovie to a end of the movie structure
+807 if file meet the cursor then end subprogram
+90 random = get random number = 2
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear
+1001 set result
+1002 output prompt "Guess what year is " + movie[random].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear = 1938
+1004 false
+1005 true  then result = 1
+1006 return the result value = 1 to the main function
+101 false
+102 output feedback " You guess it wrong! it was made in " + movie[2].year = 1939
+103 skip to instruction 105
+105 answer = yOrN() subprogram
+***function char yOrN()
+10501 set userAnswer
+10502 set resultAnswer
+10503 output prompt "Do you want to play again or want to add another movie to the list? "
+10504 input userAnswer = y
+10505 false
+10506 resultAnswer = y
+10507 skip to instruction 10513
+10513 return the value of resultAnswer = y
+106 true then skip to instruction 90
+90 random = get random number = 1
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear 
+1001 set result
+1002 output prompt "Guess what year is " + movie[1].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear = ...
+
+Test case #3: 
+purpose: invalid input
+input : 1939 , k
+input file:
+"Titanic"
+1997
+
+"Casablanca"
+1942
+
+"Gone with the wind"
+1939
+
+expected results :
+
+Guess what year is "Gone with the wind" movie was made? [valid input : numbers]: 1939
+ You are correct!
+Do you want to play again or want to add another movie to the list? k
+ I can not understand whether you want to play again or add another movie!
+Do you want to play again or want to add another movie to the list?
+
+999END
+
+
+
+10 set sturct Movies containing title and year field
+20 set deque<Movies> movie
+30 set userGuessYear
+40 set result
+50 set answer
+60 set i
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file and create a list
+80 subprogram inputMovies(movie)
+***function void inputMovies(deque<Movies>& movie)
+800 set ifstream fin
+801 set fileName = "movieData.txt"
+802 set Movies amovie 
+803 open the file name FileName
+804 file input amovie.title
+805 file input amovie.year
+806 add a value amovie to a end of the movie structure
+807 if file meet the cursor then end subprogram
+90 random = get random number = 2
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear 
+1001 set result
+1002 output prompt "Guess what year is " + movie[2].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear = 1939
+1004 true then result = 0
+1005 false
+1006 return the result value = 0 to the main function
+101 true then skip to instruction 104
+104 output feedback " You are correct! "
+105 answer = yOrN() subprogram
+***function char yOrN()
+10501 set userAnswer
+10502 set resultAnswer
+10503 output prompt "Do you want to play again or want to add another movie to the list? "
+10504 input userAnswer = y
+10505 true  then skip to instruction 10508
+10508 true then skip to instruction 10511
+10511 output error message " I can not understand whether you want to play again or add another movie! "
+10512 skip to instruction 10503
+10503 output prompt "Do you want to play again or want to add another movie to the list? "
+
+999END
+
+
+Test case #4: 
+purpose: output sorted movies
+input : 1939 , n
+input file:
+"Titanic"
+1997
+
+"Casablanca"
+1942
+
+"Gone with the wind"
+1939
+
+expected results :
+
+Guess what year is "Gone with the wind" movie was made? [valid input : numbers]: 1939
+ You are correct!
+Do you want to play again or want to add another movie to the list? N
+
+"Gone with the wind"  1939
+"Casablanca"  1942
+"Titanic"  1997
+
+999END
+
+10 set sturct Movies containing title and year field
+20 set deque<Movies> movie
+30 set userGuessYear
+40 set result
+50 set answer
+60 set i
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file and create a list
+80 subprogram inputMovies(movie)
+***function void inputMovies(deque<Movies>& movie)
+800 set ifstream fin
+801 set fileName = "movieData.txt"
+802 set Movies amovie 
+803 open the file name FileName
+804 file input amovie.title
+805 file input amovie.year
+806 add a value amovie to a end of the movie structure
+807 if file meet the cursor then end subprogram
+90 random = get random number = 2
+100 result = askMovie(movie,random) subprogram
+***function askMovie(deque<Movies>& movie, int random)
+1000 set userGuessYear 
+1001 set result
+1002 output prompt "Guess what year is " + movie[2].title +" movie was made? [valid input : numbers]: "
+1003 input userGuessYear = 1939
+1004 true then result = 0
+1005 false
+1006 return the result value = 0 to the main function
+101 true then skip to instruction 104
+104 output feedback " You are correct! "
+105 answer = yOrN() subprogram
+***function char yOrN()
+10501 set userAnswer
+10502 set resultAnswer
+10503 output prompt "Do you want to play again or want to add another movie to the list? "
+10504 input userAnswer = N
+10505 true then skip to instruction 10508
+10508 false
+10509 resultAnswer = n
+10510 skip to instruction 10513
+10513 return the value of resultAnswer = n
+106 false
+107 outputList(movie) subprogram
+*** function outputList(deque<Movies>& movie)
+1071 set i
+1072 sortList(movie) subprogram
+***function sortList(deque<Movies>& movie)
+107201 set i
+107202 set j
+107203 set swapy
+107204 set swapt
+107205 i =0
+107206 j =1
+107207 if movie[0].year = 1997 is less than and equal to movie[1].year = 1942  false
+107208 swapy = movie[0].year = 1997
+107209 movie[0].year = movie[1].year = 1942
+107210 movie[1].year = swapy = 1997
+107211 swapt = movie[0].title = "Titanic"
+107212 movie[0].title = movie[1].title = "Casablanca"
+107213 movie[1].title = swapt = "Titanic"
+1072135 j = 2
+107214 true then skip to instruction 107206
+107206 j =2
+107207 if movie[0].year = 1942 is less than and equal to movie[2].year = 1939  false
+107208 swapy = movie[0].year = 1942
+107209 movie[0].year = movie[2].year = 1939
+107210 movie[2].year = swapy = 1942
+107211 swapt = movie[0].title = "Casablanca"
+107212 movie[0].title = movie[2].title = "Gone with the wind"
+107213 movie[2].title = swapt = "Casablanca"
+1072135 j = 3
+107214 false
+107215 i = 1
+107216 true then skip to instruction 107206
+107206 j =2
+107207 if movie[1].year = 1997 is less than and equal to movie[2].year = 1942  false
+107208 swapy = movie[1].year = 1997
+107209 movie[1].year = movie[2].year = 1942 
+107210 movie[2].year = swapy = 1997
+107211 swapt = movie[1].title = "Titanic"
+107212 movie[1].title = movie[2].title = "Casablanca"
+107213 movie[2].title = swapt = "Titanic"
+1072135 j = 3
+107214 false
+107215 i = 2
+107216 false
+107217 end subprogram
+1073 set i = 0
+1074 output label "Gone with the wind"  1939
+1075 i = 1
+1076 true then skip to instruction 1074
+1074 output label "Casablanca"  1942
+1075 i = 2
+1076 true then skip to instruction 1074
+1074 output label "Titanic"  1997
+1075 i = 3
+1076 false
+1077 end subprogram
+108 end program
+
+
+
+
+
+
+

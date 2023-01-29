@@ -1,0 +1,244 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): The program randomly select and output titles in a loop until the user wishes to stop
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+answer
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. read input file
+4.output prompt
+5.save input file to list
+6. add new score to list, if list is not full 
+7.determine whether it was played last 5 times
+7.5 user answer
+8.store the last 5 played songs
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt "play a song [Y/N]?: "
+-label  "Can not understand, I will just play another song "
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+  ifstream fin; 
+  const int MAX_SONGS = 200; // list capacity 
+-nSongs = 0; (integer)// initially empty 
+-songs[MAX_SONGS] (string)
+-answer (character) // determine to play a song or not
+-srand(time(0)); rand(); //"seed" the random number generator
+-random = 0 + rand() % 200 (integer) //random song
+-i = (integer) // index loop
+-deque<Music> music // create a empty list
+-Music amusic // to put values in the amusic
+
+3. Algorithm instructions (recipe)
+***data
+10 set int MAX_SONGS = 200
+20 set nSongs = 0
+30 set songs
+40 set answer
+41 set i
+42 set structure Music contains field name
+***user introduction 
+50 output introduction: objective, author, instructions/rules
+***read input file
+60 open songs.txt file
+***output prompt
+70 output prompt "play a song [Y/N]?: "
+80 input answer
+90 set random = 0 + rand() % 200 (integer)
+***save input file to list
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[nSongs++] = aSongs then skip to 100
+***determine whether it was played last 5 times
+120 set count = 0
+130 set random = random number
+140 if music size is 0 then skip to instruction 200
+150 set i =0
+160 if music[i].name is equal to songs[random] then count = count + 1
+170 i = i+ 1
+180 if i is less than music size then skip to instruction 160
+190 if count is not equal to 0 then skip to instruction 120
+***user answer
+200 if answer is equal to y or Y output songs[random] then skip to 230
+210 if answer is equal to n or N skip to instruction 260
+220 else ouput prompt  "Can not understand, I will just play another song " skip to 70
+***store the last 5 played songs
+230 amusic.name = songs[random]
+240 add songs[random] at the end of the music struct
+250 if music size is bigger than 5 then remove value from the front of the list
+255 skip to instruction 70
+260 end program
+
+
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: simple example
+input :
+expected results :
+play a song [Y/N]?: y
+Ted Weems - Heartaches.mp3
+play a song [Y/N]?: y
+Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3
+play a song [Y/N]?: n
+
+10 set int MAX_SONGS = 200
+20 set nSongs = 0
+30 set songs
+40 set answer
+***user introduction 
+50 output introduction: objective, author, instructions/rules
+***read input file
+60 open songs.txt file
+70 output prompt "play a song [Y/N]?: "
+80 input answer =y 
+90 set random = 0 + rand() % 200 (integer)
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[0] = aSongs then skip to 100
+x200 times because of MAX_SONGS
+110 false
+120 set count = 0
+130 set random number 
+140 true skip to instuction 200
+200 true output songs[random] = Ted Weems - Heartaches.mp3 then skip to 230
+230 amusic.name = Ted Weems - Heartaches.mp3 
+240 add songs[random] at the end of the music struct = Ted Weems - Heartaches.mp3 
+250 false
+255 skip to instruction 70
+70 output prompt "play a song [Y/N]?: "
+80 input answer =y 
+90 set random = 0 + rand() % 200 (integer)
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[0] = aSongs then skip to 100
+x200 times because of MAX_SONGS
+110 false
+120 set count = 0
+130 set random = random number
+140 false
+150 set i =0
+160 false
+170 i = 1
+180 false
+190 false
+200 true output songs[random] = Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3 then skip to 230
+230 amusic.name = Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3
+240 add songs[random] at the end of the music struct = Ted Weems - Heartaches.mp3 , Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3
+250 false
+255 skip to instruction 70
+70 output prompt "play a song [Y/N]?: "
+80 input answer = n 
+90 set random = 0 + rand() % 200 (integer)
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[0] = aSongs then skip to 100
+x200 times because of MAX_SONGS
+110 false
+120 set count = 0
+130 set random = random number
+140 false
+150 set i =0
+160 false
+170 i = 1
+180 true then skip to 160
+160 false
+170 i = 2
+180 false
+190 false
+200 false
+210 true then skip to instruction 260
+260 end program
+
+999 END
+Test case #2:
+purpose: invalid input
+input :
+expected results :
+play a song [Y/N]?: y
+Ted Weems - Heartaches.mp3
+play a song [Y/N]?: y
+Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3
+play a song [Y/N]?: k
+Can not understand, I will just play another song
+play a song [Y/N]?:
+
+999END
+
+10 set int MAX_SONGS = 200
+20 set nSongs = 0
+30 set songs
+40 set answer
+***user introduction 
+50 output introduction: objective, author, instructions/rules
+***read input file
+60 open songs.txt file
+70 output prompt "play a song [Y/N]?: "
+80 input answer =y 
+90 set random = 0 + rand() % 200 (integer)
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[0] = aSongs then skip to 100
+x200 times because of MAX_SONGS
+110 false
+120 set count = 0
+130 set random number 
+140 true skip to instuction 200
+200 true output songs[random] = Ted Weems - Heartaches.mp3 then skip to 230
+230 amusic.name = Ted Weems - Heartaches.mp3 
+240 add songs[random] at the end of the music struct = Ted Weems - Heartaches.mp3 
+250 false
+255 skip to instruction 70
+70 output prompt "play a song [Y/N]?: "
+80 input answer =y 
+90 set random = 0 + rand() % 200 (integer)
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[0] = aSongs then skip to 100
+x200 times because of MAX_SONGS
+110 false
+120 set count = 0
+130 set random = random number
+140 false
+150 set i =0
+160 false
+170 i = 1
+180 false
+190 false
+200 true output songs[random] = Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3 then skip to 230
+230 amusic.name = Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3
+240 add songs[random] at the end of the music struct = Ted Weems - Heartaches.mp3 , Mario Lanza-Loveliest Night Of The Year (Rca Victor).mp3
+250 false
+255 skip to instruction 70
+70 output prompt "play a song [Y/N]?: "
+80 input answer = k
+90 set random = 0 + rand() % 200 (integer)
+100 set aSongs
+105 fileinput aSongs
+110 if nSongs is less than MAX_SONGS then songs[0] = aSongs then skip to 100
+x200 times because of MAX_SONGS
+110 false
+120 set count = 0
+130 set random = random number
+140 false
+150 set i =0
+160 false
+170 i = 1
+180 true then skip to 160
+160 false
+170 i = 2
+180 false
+190 false
+200 false
+210 false
+220 else ouput prompt  "Can not understand, I will just play another song " skip to 70
+70 output prompt "play a song [Y/N]?: "
+...

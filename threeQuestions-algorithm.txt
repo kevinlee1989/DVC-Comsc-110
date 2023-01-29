@@ -1,0 +1,269 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): asks the questions and the score is incremented by 1 if the user answered a question correctly.
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-userAnswer
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. ask questions and determine whether it is correct or not
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt : "What is it called as a data in computer programming language? "
+-prompt : "How many number can you express by Binary Numbering System? [answer by number]"
+-prompt : "What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy "
+-incorrect message : " Incorrect, but a better answer would be " + a1
+-correct message : "Correct!"
+-label :  "That's " + correct + "out of 3 questions asked."
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-score= (integer) determine how many correct answer does user get?
+-result = (bool) determine answer is false or true
+-userAnswer = (string),(integer),(character) // different by different subprograms
+-i = (integer) for question index
+
+3. Algorithm instructions (recipe)
+***data
+10 set correct =0;
+***user introduction 
+20 output introduction: objective, author, instructions/rules
+*** ask questions and determine whether it is correct or not
+//algorithm for subprogram "getquestion"
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + i + "  " + question + "  ";
+3010 input userAnswer from console
+3011 if userAnswer is not c answer then skip to 3013
+3012 userAnswer is C
+3013 if userAnswer is not value or Value or Values then skip to 3015
+3014 userAnswer is "values"
+3015 if userAnswer is answer then skip to instruction 3018
+3016 output " Incorrect, but a better answer would be " + answer
+3017 skip to instruction 3020
+3018 output "Correct!"
+3019 result = true
+3020 return from subprogram getquestion1 with result value
+
+
+// algorithm for main
+30 getquestion from subprogram
+40 set question = "What is it called as a data in computer programming language? "
+43 set answer = values
+44 set i = 1
+45 if getquestion if ture then add 1 to score
+50 getquestion from subprogram
+60 set question = "How many number can you express by Binary Numbering System? [answer by number]"
+61 set answer = 2
+62 set i = 2
+63 if getquestion if ture then add 1 to score
+70 getquestion from subprogram
+71 set question = "What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy ?"
+72 set answer = C
+73 set i = 3
+80 if getquestion is true then add 1 to score 
+90  output  "That's " + score + "out of 3 questions asked."
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose : simple example for answer correctly
+input : values, 2, C
+expected results
+Q1. What is it called as a data in computer programming language?   values
+Correct!
+
+Q2. How many number can you express by Binary Numbering System?   2
+Correct!
+
+Q3. What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy   C
+Correct!
+
+That's 3out of 3 questions asked.
+...
+10 set correct =0;
+***user introduction 
+20 output introduction: objective, author, instructions/rules
+*** ask questions and determine whether it is correct or not
+30 getquestion from subprogram
+40 set question = "What is it called as a data in computer programming language? "
+43 set answer = values
+44 set i = 1
+45  ture then add 1 to score
+//algorithm for subprogram "getquestion"
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 1 + "  " + question + "  ";
+3010 input userAnswer = values
+3011 true then skip to 3013
+3013 true then skip to 3015
+3015 true then skip to instruction 3018
+3018 output "Correct!"
+3019 result = true
+3020 return from subprogram getquestion with result value = ture
+999 END
+50 getquestion from subprogram
+60 set question = "How many number can you express by Binary Numbering System? [answer by number]"
+61 set answer = 2
+62 set i = 2
+63 ture then add 1 to score = 2
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 2+ "  " + question + "  ";
+3010 input userAnswer = 2
+3011 true then skip to 3013
+3013 true then skip to 3015
+3015 true then skip to instruction 3018
+3018 output "Correct!"
+3019 result = true
+3020 return from subprogram getquestion with result value = ture
+70 getquestion from subprogram
+71 set question = "What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy ?"
+72 set answer = C
+73 set i = 3
+80 true then add 1 to score = 3
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 3 + "  " + question + "  ";
+3010 input userAnswer = C
+3011 true then skip to 3013
+3013 true then skip to 3015
+3015 true then skip to instruction 3018
+3018 output "Correct!"
+3019 result = true
+90  output  "That's " + 3 + "out of 3 questions asked."
+Test case #2: 
+purpose : simple example for answer incorrectly
+input : variable, 3, B
+expected results
+
+Q1. What is it called as a data in computer programming language?   variable
+ Incorrect, but a better answer would be values
+
+Q2. How many number can you express by Binary Numbering System?   3
+ Incorrect, but a better answer would be 2
+
+Q3. What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy   b
+ Incorrect, but a better answer would be C
+
+That's 0out of 3 questions asked.
+
+10 set correct =0;
+***user introduction 
+20 output introduction: objective, author, instructions/rules
+*** ask questions and determine whether it is correct or not
+30 getquestion from subprogram
+40 set question = "What is it called as a data in computer programming language? "
+43 set answer = values
+44 set i = 1
+45  ture then add 1 to score
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 1 + "  " + question + "  ";
+3010 input userAnswer from console = variable
+3011 True then skip to 3013
+3013 true then skip to 3015
+3015 false
+3016 output " Incorrect, but a better answer would be " + values
+3017 skip to instruction 3020
+3020 return from subprogram getquestion with result value = false
+60 set question = "How many number can you express by Binary Numbering System? [answer by number]"
+61 set answer = 2
+62 set i = 2
+63 if getquestion if ture then add 1 to score
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 2 + "  " + question + "  ";
+3010 input userAnswer from console = 3
+3011 True then skip to 3013
+3013 true then skip to 3015
+3015 false
+3016 output " Incorrect, but a better answer would be " + 2
+3017 skip to instruction 3020
+3020 return from subprogram getquestion with result value = false
+70 getquestion from subprogram
+71 set question = "What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy ?"
+72 set answer = C
+73 set i = 3
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 3 + "  " + question + "  ";
+3010 input userAnswer from console = B
+3011 True then skip to 3013
+3013 ture then skip to 3015
+3015 false
+3016 output " Incorrect, but a better answer would be " + C
+3020 return from subprogram getquestion with result value = false
+90  output  "That's " + 0 + "out of 3 questions asked."
+Test case #3: 
+purpose : input similar answer which means the same 
+input : Value, 3, c
+expected results
+Q.1  What is it called as a data in computer programming language?   Value
+Correct!
+
+Q.2  How many number can you express by Binary Numbering System? [answer by number]  2
+Correct!
+
+Q.3  What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy   c
+Correct!
+
+That's 3out of 3 questions asked.
+
+10 set correct =0;
+***user introduction 
+20 output introduction: objective, author, instructions/rules
+*** ask questions and determine whether it is correct or not
+30 getquestion from subprogram
+40 set question = "What is it called as a data in computer programming language? "
+43 set answer = values
+44 set i = 1
+45 if getquestion if ture then add 1 to score = 1
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 1 + "  " + question + "  ";
+3010 input userAnswer from console = Value
+3011 true then skip to 3013
+3013 false
+3014 userAnswer is "values"
+3015 true then skip to instruction 3018
+3018 output "Correct!"
+3019 result = true
+3020 return from subprogram getquestion1 with result value = true
+60 set question = "How many number can you express by Binary Numbering System? [answer by number]"
+61 set answer = 2
+62 set i = 2
+63 if getquestion if ture then add 1 to score = 2
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 2+ "  " + question + "  ";
+3010 input userAnswer = 2
+3011 true then skip to 3013
+3013 true then skip to 3015
+3015 true then skip to instruction 3018
+3018 output "Correct!"
+3019 result = true
+3020 return from subprogram getquestion with result value = ture
+70 getquestion from subprogram
+71 set question = "What is not the requirment characteristic for programmar? a) passion b) Patience c) Lazy ?"
+72 set answer = C
+73 set i = 3
+80 if getquestion is true then add 1 to score = 3
+3000 result = false
+3001 set userAnswer 
+3005 output prompt "Q." + 3 + "  " + question + "  ";
+3010 input userAnswer from console = 3
+3011 false
+3012 userAnswer is C
+3013 ture then skip to 3015
+3015 false
+3018 output "Correct!"
+3019 result = true
+3020 return from subprogram getquestion with result value = true
+90  output  "That's " + 3 + "out of 3 questions asked."

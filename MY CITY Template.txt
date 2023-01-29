@@ -1,0 +1,142 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-5003
+
+1. Objective (1 sentence brief description of what this will do): output the forecasted high temperatures for any 5-day period for a selected city
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-day1Temp
+-day2Temp
+-day3Temp
+-day4Temp
+-day5Temp
+-day1Date
+-day2Date
+-day3Date
+-day4Date
+-day5Date
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. assign values for each of the 5 days high temperatures
+4. output the forecasted high temperatures for those 5 days
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-label : "city name, California forecast high temperatures:"
+-For each of the 5 days : day of week, month/date,degrees F, " degrees"
+-label : "source: ..." [where this data came from]
+
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-city = (text) name of the selected city and state
+-day1Temp = ( integer ) 1st day's high temperature in the city we selected as measured in degrees Farenheit
+-day2Temp = ( integer ) 2nd day's high temperature in the city we selected as measured in degrees Farenheit
+-day3Temp = ( integer ) 3rd day's high temperature in the city we selected as measured in degrees Farenheit
+-day4Temp = ( integer ) 4th day's high temperature in the city we selected as measured in degrees Farenheit
+-day5Temp = ( integer ) 5th day's high temperature in the city we selected as measured in degrees Farenheit
+-day1Date = (text) day of the week, month and day
+-day2Date = (text) day of the week, month and day
+-day3Date = (text) day of the week, month and day
+-day4Date = (text) day of the week, month and day
+-day5Date = (text) day of the week, month and day
+
+
+3. Algorithm instructions (recipe)
+***data
+10 set day1Temp = 1st day's temperature in Farenheit degrees
+20 set day2Temp = 2nd day's temperature in Farenheit degrees
+30 set day3Temp = 3rd day's temperature in Farenheit degrees
+40 set day4Temp = 4th day's temperature in Farenheit degrees
+50 set day5Temp = 5th day's temperature in Farenheit degrees
+60 set day1Date = day of week + month [abreviated to first 3 letters] + day of month 
+70 set day2Date = day of week + month [abreviated to first 3 letters] + day of month
+80 set day3Date = day of week + month [abreviated to first 3 letters] + day of month
+90 set day4Date = day of week + month [abreviated to first 3 letters] + day of month
+100 set day5Date = day of week + month [abreviated to first 3 letters] + day of month
+105 set city = "Pleasant Hill, CA"
+***introduction 
+110output introduction: objective, author, instructions/rules
+***output the forecasted high temperatures for any 5-day period for a city of Pleasant Hill, CA
+115 output city + " forecast high temperatures."
+120 output day1Date + day1Temp + "degrees"
+130 output day2Date + day2Temp + "degrees"
+140 output day3Date + day3Temp + "degrees"
+150 output day4Date + day4Temp + "degrees"
+160 output day5Date + day5Temp + "degrees"
+170 output "source: weather.com"
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: example provided
+inputs: 
+city = "San Jose, CA"
+day1Temp =76
+day1Temp =71
+day1Temp =73
+day1Temp =73
+day1Temp =76
+day1Date = " Wednesday, Aug 25"
+day2Date = "Thursday, Aug 26"
+day3Date = "Friday, Aug 27"
+day4Date = "Saturday, Aug 28"
+day5Date = "Sunday, Aug 29"
+Expected results:
+San Jose, California forecast high temperatures:
+ Wednesday, Aug 25, 76 degrees
+ Thursday, Aug 26, 71 degrees
+ Friday, Aug 27, 73 degrees
+ Saturday, Aug 28, 73 degrees
+ Sunday, Aug 29, 76 degrees
+ source: weather.com
+
+10 day1Temp = 76
+20 day2Temp = 71
+30 day3Temp = 73
+40 day4Temp = 73
+50 day5Temp = 76
+60 day1Date = " Wednesday, Aug 25"
+70 day2Date = "Thursday, Aug 26"
+80 day3Date = "Friday, Aug 27"
+90 day4Date = "Saturday, Aug 28"
+100 day5Date = "Sunday, Aug 29"
+105 city = "San Jose, CA "
+110 Objective : output the forecasted high temperatures for any 5-day period for a selected city
+Author : Kevin Lee 1989282
+115 Sn Jose, forecast high temperatures:
+ 120Wednesday, Aug 25, 76 degrees
+ 130Thursday, Aug 26, 71 degrees
+140 Friday, Aug 27, 73 degrees
+150 Saturday, Aug 28, 73 degrees
+160 Sunday, Aug 29, 76 degrees
+170 Source : weather.com
+999 END
+
+Test case #2: 
+purpose : test for another city and dates and temperature
+inputs: 
+city = "Pleasant Hill, CA"
+day1Temp =97
+day1Temp =99
+day1Temp =93
+day1Temp =88
+day1Temp =87
+day1Date = " Tuesday, Sep 7"
+day2Date = "Wednesday, Sep 8"
+day3Date = "Thursday, Sep 9"
+day4Date = "Friday, Sep 10"
+day5Date = "Saturday, Sep 11"
+Expected results:
+San Jose, California forecast high temperatures:
+ Tuesday, Sep 7, 97 degrees
+ Wednesday, Sep 8, 99 degrees
+ Thursday, Sep 9, 93 degrees
+Friday, Sep 10, 88 degrees
+ Saturday, Sep 11, 87 degrees
+ source: weather.com
+

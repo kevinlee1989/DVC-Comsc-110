@@ -1,0 +1,239 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): to calculate and output the number of weeks that it will take to reach a total of one thousand, million, billion dollars or greater.
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-week
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. calculate amount week to be what I want to be
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt : "How many weeks do you need to be " + goal + ?";
+-error message : "Invalid Input, I can not calculate"
+-label : " no we need more time"
+-label : "In " + week + " weeks, I will be a " + goal
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-week = (integer) how many weeks to save money
+-amountSaved =(double) week saved money
+-totalSaved = (double) amount all money user saved
+-i = (integer) index loop
+-goal = (string) thousand and million and billion
+-g = (integer) amount number for string goal
+
+3. Algorithm instructions (recipe)
+//calculate amount week to be what I want to be
+*** subprogram amountweek
+1000 set week
+1005 set goal
+1010 set amountSaved
+1020 set i
+1030 set totalSaved
+1040 set g
+1050 if goal is "thousandaire" then g is 1000
+1060 if goal is "millionaire" then g is 1000000
+1070 if goal is "billionaire" then g is 1000000000
+1080 ouput prompt  "How many weeks do you need to be " + goal + ?";
+1090 input week
+1100 totalSaved=0
+1110 if week is greater than 0 skip to instruction 1125
+1120 output error message  "Invalid Input, I can not calculate"
+1123 skip to instruction 1080
+1125 i = 1 
+1126 when i is greater then week then skip to instruction1170
+1130 amountSaved = 0.5 * (pow(2,(i-1)))
+1140 totalSaved = totalSaved + amountSaved;
+1150 add 1 to i
+1160 skip to introduction 1130
+1170 if totalSaved is greater than and equal to g then skip to 1120
+1180 output " no we need more time"
+1190 skip to instruction 1080
+1120 output "In " + week + " weeks, I will be a " + goal
+// main function
+***user introduction 
+20 output introduction: objective, author, instructions/rules
+***
+25 set goal "thousandaire"
+30 output function amountweek
+40 set goal  "millionaire"
+45 output fuction amountweek
+50 set goal "billionaire"
+60 output function amountweek
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: simple example
+input : 11 23 40 
+expected results
+How many weeks do you need to be thousandaire? :11
+In 11 weeks, I will be a thousandaire
+How many weeks do you need to be millionaire? :23
+In 23 weeks, I will be a millionaire
+How many weeks do you need to be billionaire? :40
+In 40 weeks, I will be a billionaire
+
+25 set goal "thousandaire"
+30 output function amountweek
+1000 set week
+1005 set goal
+1010 set amountSaved
+1020 set i
+1030 set totalSaved
+1040 set g
+1050 true then g is 1000
+1060 false then g is 1000000
+1070 false then g is 1000000000
+1080 ouput prompt  "How many weeks do you need to be " + thousandaire + ?";
+1090 input week = 11
+1100 totalSaved=0
+1110 true skip to instruction 1125
+1125 i = 1 
+1126 when i is greater then week then skip to instruction1170
+1130 amountSaved = 0.5 * (pow(2,(i-1)))
+1140 totalSaved = totalSaved + amountSaved;
+1150 add 1 to i
+1160 skip to introduction 1126
+...11 times repeating 1126 and 1160
+1170 true then skip to 1120
+1120 output "In " + 11 + " weeks, I will be a " + thousandaire
+40 set goal  "millionaire"
+45 output fuction amountweek
+1000 set week
+1005 set goal
+1010 set amountSaved
+1020 set i
+1030 set totalSaved
+1040 set g
+1050 false then g is 1000
+1060 true then g is 1000000
+1070 false then g is 1000000000
+1080 ouput prompt  "How many weeks do you need to be " + millionaire + ?";
+1090 input week = 23
+1100 totalSaved=0
+1110 true skip to instruction 1125
+1125 i = 1 
+1126 when i is greater then week then skip to instruction1170
+1130 amountSaved = 0.5 * (pow(2,(i-1)))
+1140 totalSaved = totalSaved + amountSaved;
+1150 add 1 to i
+1160 skip to introduction 1126
+...23 times repeating 1126 and 1160
+1170 true then skip to 1120
+1120 output "In " + 23 + " weeks, I will be a " + millionaire
+50 set goal "billionaire"
+60 output function amountweek
+1000 set week
+1005 set goal
+1010 set amountSaved
+1020 set i
+1030 set totalSaved
+1040 set g
+1050 false then g is 1000
+1060 false then g is 1000000
+1070 true then g is 1000000000
+1080 ouput prompt  "How many weeks do you need to be " + billionaire + ?";
+1090 input week = 40
+1100 totalSaved=0
+1110 true skip to instruction 1125
+1125 i = 1 
+1126 when i is greater then week then skip to instruction1170
+1130 amountSaved = 0.5 * (pow(2,(i-1)))
+1140 totalSaved = totalSaved + amountSaved;
+1150 add 1 to i
+1160 skip to introduction 1126
+...40 times repeating 1126 and 1160
+1170 true then skip to 1120
+1120 output "In " + 40 + " weeks, I will be a " + billionaire
+
+999 END
+
+Test case #2: 
+purpose: when you assume it wrong
+input : 5, 9
+expected results
+How many weeks do you need to be thousandaire? :5
+ no we need more time
+How many weeks do you need to be thousandaire? :9
+ no we need more time
+How many weeks do you need to be thousandaire? :
+
+25 set goal "thousandaire"
+30 output function amountweek
+*** subprogram amountweek
+1000 set week
+1005 set goal
+1010 set amountSaved
+1020 set i
+1030 set totalSaved
+1040 set g
+1050 true is "thousandaire" then g is 1000
+1060 false is "millionaire" then g is 1000000
+1070 false is "billionaire" then g is 1000000000
+1080 ouput prompt  "How many weeks do you need to be " + thousandaire + ?";
+1090 input week = 5
+1100 totalSaved=0
+1110 true skip to instruction 1125
+1125 i = 1 
+1126 when i is greater then week then skip to instruction1170
+1130 amountSaved = 0.5 * (pow(2,(i-1)))
+1140 totalSaved = totalSaved + amountSaved;
+1150 add 1 to i
+1160 skip to introduction 1130
+...repeating 1126 to 1160 for 5 times
+1170 false
+1180 output " no we need more time"
+1190 skip to instruction 1080
+1080 ouput prompt  "How many weeks do you need to be " + thousandaire + ?";
+1090 input week = 9
+1100 totalSaved=0
+1110 true skip to instruction 1125
+1125 i = 1 
+1126 when i is greater then week then skip to instruction1170
+1130 amountSaved = 0.5 * (pow(2,(i-1)))
+1140 totalSaved = totalSaved + amountSaved;
+1150 add 1 to i
+1160 skip to introduction 1130
+...repeating 1126 to 1160 for 9 times
+1170 false
+1180 output " no we need more time"
+1190 skip to instruction 1080
+1180 output " no we need more time"
+...
+END 999
+
+Test case #3: 
+purpose: invalid linput
+input : -1
+expected results
+How many weeks do you need to be thousandaire? :-1
+Invalid Input, I can not calculate
+How many weeks do you need to be thousandaire? :
+
+25 set goal "thousandaire"
+30 output function amountweek
+1000 set week
+1005 set goal
+1010 set amountSaved
+1020 set i
+1030 set totalSaved
+1040 set g
+1050 true then g is 1000
+1060 false
+1070 false
+1080 ouput prompt  "How many weeks do you need to be " + thousandaire + ?";
+1090 input week = -1
+1100 totalSaved=0
+1110 false
+1120 output error message  "Invalid Input, I can not calculate"
+1123 skip to instruction 1080
+1080 ouput prompt  "How many weeks do you need to be " + thousandaire + ?"; 
+...

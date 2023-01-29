@@ -1,0 +1,275 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): The program will provide a program to manage the records of students.
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-name
+-address
+-city
+-state
+-zip
+-gender
+-studentid
+-gpa
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. input student personal information
+4. output student personal information
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-label Name: 
+-label Address:
+-label City: 
+-label State: 
+-label Zip [numbers only]: 
+-label Gender [M/F]: 
+-label Student ID [numbers only]: 
+-label GPA [numbers only]:
+-label Enter for Student b
+-label Output for Student c
+-prompt Name: 
+-prompt Address: 
+-prompt City: 
+-prompt State: 
+-prompt Zip [numbers only]: 
+-prompt Gender [M/F]: 
+-prompt Student ID [numbers only]: 
+-prompt GPA [numbers only]: 
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+- string name
+- string address
+ -string city
+ -string state
+ -int zip
+ -char gender
+ -int studentid
+ -double gpa
+- int b // for input student index
+- int c // for output student index
+
+3. Algorithm instructions (recipe)
+***data
+10 set name 
+20 set address
+30 set city
+40 set state
+50 set zip
+60 set gender
+70 set studentid
+80 set gpa
+***user introduction 
+90 output introduction: objective, author, instructions/rules
+***input student personal information
+100 set structure student a = subprogram geta
+110 set structure student b = subprogram geta
+120 set structure student c = subprogram geta
+*** subprogram geta(student& x, int b)
+900 set student a 
+1000 output label "Enter for student " + b
+1010 output prompt "Name :" 
+1020 input x.name
+1030 output prompt "Address :"
+1040 input x.address
+1050 output prompt "State :"
+1060 input x.state
+1070 output prompt "Zip [numbers only]
+1080 input zip
+1090 output prompt "Gender [M/F]: "
+1100 input gender
+1110 output prompt "Student ID [numbers only]: ";
+1120 input studentid
+1130 output prompt "GPA [numbers only]: ";
+1140 input gpa
+1150 return a;
+*** output student personal information
+130 output student a
+140 output student b
+150 output student c
+*** subprogram output(student& x, int c)
+1300 output "Output for student " + c 
+1310 output "Name: " + x.name
+1320 output "Address: "+ x.address 
+1330 output "City: " + x.city 
+1340 output "State: " + x.state 
+1350 output "Zip [numbers only]: " + x.zip 
+1360 output "Gender [M/F]: " + x.gender 
+1370 output "Student ID [numbers only]: " + x.studentid 
+1380 output "GPA [numbers only]: " + x.gpa 
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose: simple example
+input : below the output 
+expected results :
+Enter for Student 1
+Name: Kevin
+Address: Bundang
+City: SeongNam
+State: Gyeong gi
+Zip [numbers only]: 13456
+Gender [M/F]: M
+Student ID [numbers only]: 1989282
+GPA [numbers only]: 4.00
+
+Enter for Student 2
+Name: Jaewoo
+Address: Yong In
+City: E Cheon
+State: Gyeong gi
+Zip [numbers only]: 49820
+Gender [M/F]: F
+Student ID [numbers only]: 1283922
+GPA [numbers only]: 3.80
+
+Enter for Student 3
+Name: Le
+Address: Su Jeong
+City: Seong Nam
+State: Gyeong gi
+Zip [numbers only]: 29348
+Gender [M/F]: M
+Student ID [numbers only]: 87654
+GPA [numbers only]: 3.90
+
+Output for student 1
+Name: Kevin
+Address: Bundang
+City: SeongNam
+State: Gyeong gi
+Zip [numbers only]: 13456
+Gender [M/F]: M
+Student ID [numbers only]: 1989282
+GPA [numbers only]: 4
+
+Output for student 2
+Name: Jaewoo
+Address: Yong In
+City: E Cheon
+State: Gyeong gi
+Zip [numbers only]: 49820
+Gender [M/F]: F
+Student ID [numbers only]: 1283922
+GPA [numbers only]: 3.8
+
+Output for student 3
+Name: Le
+Address: Su Jeong
+City: Seong Nam
+State: Gyeong gi
+Zip [numbers only]: 29348
+Gender [M/F]: M
+Student ID [numbers only]: 87654
+GPA [numbers only]: 3.9
+...
+
+999 END
+
+10 set name 
+20 set address
+30 set city
+40 set state
+50 set zip
+60 set gender
+70 set studentid
+80 set gpa
+***user introduction 
+90 output introduction: objective, author, instructions/rules
+***input student personal information
+100 set structure student a = subprogram geta
+110 set structure student b = subprogram geta
+120 set structure student c = subprogram geta
+*** subprogram geta(student& x, int b)
+900 set student a 
+1000 output label "Enter for student " + b
+1010 output prompt "Name :" 
+1020 input x.name Kevin
+1030 output prompt "Address :"
+1040 input x.address Bundang
+1050 output prompt "State :"
+1060 input x.state SeongNam
+1070 output prompt "Zip [numbers only]
+1080 input zip 13456
+1090 output prompt "Gender [M/F]: "
+1100 input gender M
+1110 output prompt "Student ID [numbers only]: ";
+1120 input studentid 1989282
+1130 output prompt "GPA [numbers only]: ";
+1140 input gpa 4
+1150 return a;
+900 set student b
+1000 output label "Enter for student " + b
+1010 output prompt "Name :" 
+1020 input x.name Jaewoo
+1030 output prompt "Address :"
+1040 input x.address Yong In
+1050 output prompt "State :"
+1060 input x.state E cheon
+1070 output prompt "Zip [numbers only]
+1080 input zip 49820
+1090 output prompt "Gender [M/F]: "
+1100 input gender F
+1110 output prompt "Student ID [numbers only]: ";
+1120 input studentid 1283922
+1130 output prompt "GPA [numbers only]: ";
+1140 input gpa 3.8
+1150 return b;
+900 set student c
+1000 output label "Enter for student " + b
+1010 output prompt "Name :" 
+1020 input x.name Le
+1030 output prompt "Address :"
+1040 input x.address Su Jeong
+1050 output prompt "State :"
+1060 input x.state Seong Nam
+1070 output prompt "Zip [numbers only]
+1080 input zip 29348
+1090 output prompt "Gender [M/F]: "
+1100 input gender M
+1110 output prompt "Student ID [numbers only]: ";
+1120 input studentid 87654
+1130 output prompt "GPA [numbers only]: ";
+1140 input gpa 3.9
+1150 return c;
+*** output student personal information
+130 output student a
+140 output student b
+150 output student c
+*** subprogram output(student& x, int c)
+1300 output "Output for student " + 1 
+1310 output "Name: " + Kevin
+1320 output "Address: "+ Bundang
+1330 output "City: " + Seong Nam
+1340 output "State: " + Gyeong gi
+1350 output "Zip [numbers only]: " +13456
+1360 output "Gender [M/F]: " + M
+1370 output "Student ID [numbers only]: " + 1989282
+1380 output "GPA [numbers only]: " + 4
+1300 output "Output for student " + 2
+1310 output "Name: " + Jaewoo
+1320 output "Address: "+ Yong In
+1330 output "City: " + E cheon
+1340 output "State: " + Gyeong gi
+1350 output "Zip [numbers only]: " + 49820
+1360 output "Gender [M/F]: " + F
+1370 output "Student ID [numbers only]: " + 1283922
+1380 output "GPA [numbers only]: " + 3.8
+1300 output "Output for student " + 3
+1310 output "Name: " + Le
+1320 output "Address: "+ Su Jeong
+1330 output "City: " + Seong Nam
+1340 output "State: " + Gyeong gi
+1350 output "Zip [numbers only]: " + 29348
+1360 output "Gender [M/F]: " + M
+1370 output "Student ID [numbers only]: " + 87654
+1380 output "GPA [numbers only]: " + 3.9
+999 END
+Test case #2: 

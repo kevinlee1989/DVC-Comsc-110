@@ -1,0 +1,474 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): 
+The program will Encode the entered text so that each character is converted to the next character in the ASCII code.
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-r
+-fN
+-keepGoing
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. read input file
+4. encode the sentence
+5. output result
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt "Please enter an input filename [i.e. : x.txt] : "
+-label : " File was empty . "
+-instruction : Then "encode" the entered text so that each character is converted to the next character in the ASCII code. That is, convert 'A' to 'B', '4' to '5', '*' to '+', etc. So the word "Hello" will appear as "Ifmmp" in encoded form. Remember a line of text contains multiple characters, and each character has an ASCII value, and by adding 1 to that ASCII value results in the next character in the ASCII table.
+-prompt : "Enter a line of text:";
+-label : " there are no line "
+-label : " finish decoding the line!"
+-prompt : "Do you want to keep going? [Y/N] : "
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+  string objective = "The program will be a template for C++ programs and to test code.\n"; //program objective
+  string instructions = "Decode the entered text so that each character is converted to the next character in the ASCII code. That is, convert 'B' to 'A', '5' to '4', '+' to '*', etc. So the word Ifmmp will appear as Hello in decoded form. Remember a line of text contains multiple characters, and each character has an ASCII value, and by subtracting 1 to that ASCII value results in the next character in the ASCII table.\n\n"; //user instructions 
+-int i //index loop
+-string s // user selected sentence
+-string fileName //file name
+-ifstream fin //fin
+-int count = 1 // determine whether file is empty
+-int r //user wanted line
+-ofstream fout //fout
+-string first
+-string second
+-string third
+-string forth
+-string nsaEncode = "nsaEncode.txt"; //output file
+-int r
+-int offset[SIZE] ={5, -8, -12, -6, -1}
+-index = (integer) // for index
+-keepGoing = (character)
+
+3. Algorithm instructions (recipe)
+***data
+10 set objective
+20 set instructions
+30 set i=0
+40 set s
+50 set fileName
+51 set nsaEncode = "nsaEncode.txt" //output file
+52 set r
+53 set offset[SIZE]
+54 set index  // for index
+55 set keepGoing 
+60 set fin
+65 set count=1
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN
+805 if fN's length is not bigger than 5 then skip to 1704
+806 return value fN to getFileName
+90 file input
+***main function
+110 output prompt "Enter a line of text:"
+110 input r
+*** subprogram for encode(string a, int* offset)
+1000 if i is larger than and equal to a length then skip to instruction 1010
+1001 index = i % SIZE
+1002 output offset[index]
+1003 add offset[index] to order of a letter of a
+1005 i = i + 1 
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing
+1008 if keepGoing is 'n' or 'N' then skip to instruction 1040
+1009 skip to instruction 1000
+1010 if i is larger than 0 then output "finish decoding the line"then skip to instruction 1040
+1030 else output "empty file"
+1040 return value a to encode function
+120 if r is 1 then skip to instruction 240
+130 if r is 2 then skip to instruction 210
+140 if r is 3 then skip to instruction 180
+150 forth = encode function
+160 output forth
+170 skip to instruction 260
+180 third = encode function
+190 output third
+200 skip to instruction 260
+210 second = encode function
+220 output second
+230 skip to instruction 260
+240 first = encode function
+250 output first
+260 if r is larger than 4 then output : "there are no line"
+***file output result
+400 if r is equal to 1 file output first
+410 if r is equal to 2  file output second
+420 if r is equal to 3  file output third
+430 if r is equal to 4 file output forth
+440 close output file
+450 close input file
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1: 
+purpose : general example
+input : Cmxrp
+expected result :
+Please enter an input filename [i.e. : x.txt] : offset.txt
+Enter a line of text:1
+5
+Do you want to keep going? [Y/N] : Y
+-8
+Do you want to keep going? [Y/N] : Y
+-12
+Do you want to keep going? [Y/N] : Y
+-6
+Do you want to keep going? [Y/N] : Y
+-1
+Do you want to keep going? [Y/N] : Y
+ finish encoding the line!
+Hello
+
+***data
+10 set objective
+20 set instructions
+30 set i
+40 set s
+50 set fileName
+60 set fin
+65 set count
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set secret = "secret.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 open file secret
+90 file input s = Cmxrp
+100 set i = 0
+110 add -1 to order of i letter = C = H
+120 add -5 to i =1 
+130 true then skip to instruction 100
+100 set i = 1
+110 add 12 to order of i letter = m
+120 add 1 to i =2
+130 true then skip to instruction 100
+100 set i = 2
+110 add -1 to order of i letter = x
+120 add 1 to i =3
+130 true then skip to instruction 100
+100 set i = 3
+110 add -1 to order of i letter = r
+120 add 1 to i =4
+130 true then skip to instruction 100
+100 set i = 4
+110 add -1 to order of i letter = o
+120 add 1 to i =5 
+130 true then skip to instruction 100
+100 set i = 5
+110 add -1 to order of i letter =  
+120 add 1 to i =6 
+130 true then skip to instruction 100
+100 set i = 6
+110 add -1 to order of i letter = W
+120 add 1 to i =7 
+130 true then skip to instruction 100
+100 set i = 7
+110 add -1 to order of i letter = o
+120 add 1 to i =8
+130 true then skip to instruction 100
+100 set i = 8
+110 add -1 to order of i letter = r
+120 add 1 to i =9
+130 true then skip to instruction 100
+100 set i = 9
+110 add -1 to order of i letter = l
+120 add 1 to i =10
+130 true then skip to instruction 100
+100 set i = 10
+110 add -1 to order of i letter = d
+120 add 1 to i =11
+130 false
+150 file input 
+160 set i = 0
+170 add -1 to order of i letter 
+180 add 1 to i =1 
+195 add 1 to count =1 
+200 false
+220 file input =third = 
+230 set i = 0
+240 add -1 to order of i letter =
+250 add 1 to i= 1
+265 add 1 to count = 1
+270 false
+290 file input =forth
+330 false
+3301 false
+350 false
+360 true then output first and skip to instruction 450
+450 close input file
+
+
+999 END
+
+Test case #1: 
+purpose : general example
+input : Hello, B , A  1
+expected result :
+Please enter an input filename [i.e. : x.txt] : offset.txt
+Enter a line of text:1
+-5
+Do you want to keep going? [Y/N] : Y
+8
+Do you want to keep going? [Y/N] : Y
+12
+Do you want to keep going? [Y/N] : Y
+6
+Do you want to keep going? [Y/N] : Y
+1
+Do you want to keep going? [Y/N] : Y
+ finish encoding the line!
+Cmxrp
+
+
+***data
+10 set objective
+20 set instructions
+30 set i=0
+40 set s
+50 set fileName
+51 set nsaEncoder = "nsaEncoder.txt" //output file
+52 set r
+53 set offset[SIZE]
+54 set index  // for index
+55 set keepGoing 
+60 set fin
+65 set count=1
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set nsaEncoder = "nsaEncoder.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN = offset.txt
+805 if fN's length is not bigger than 5 then skip to 1704
+806 return value fN to getFileName
+90 file input
+***main function
+110 output prompt "Enter a line of text:"
+110 input r = 1
+*** subprogram for encode(string a, int* offset)
+1000 false
+1001 index = 0 % SIZE = 0
+1002 output offset[index]
+1003 add -5 to H =C
+1005 i = 0+ 1 = 1
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing Y
+1008 false
+1009 skip to instruction 1000
+1000 false
+1001 index = 1 % SIZE = 1
+1002 output offset[index]
+1003 add  -8 to m = e
+1005 i = 1+ 1 = 2
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing Y
+1008 false
+1009 skip to instruction 1000
+1000 false
+1001 index = 2 % SIZE = 2
+1002 output offset[index]
+1003 add -12 to x = l
+1005 i = 2+ 1 = 3
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing Y
+1008 false
+1009 skip to instruction 1000
+1000 false
+1001 index = 3 % SIZE = 3
+1002 output offset[index]
+1003 add -6 to r = l
+1005 i = 3+ 1 = 4
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing Y
+1008 false
+1009 skip to instruction 1000
+1000 false
+1001 index = 4 % SIZE = 4
+1002 output offset[index]
+1003 add -1 to p = o
+1005 i = 4+ 1 = 5
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing Y
+1008 false
+1009 skip to instruction 1000
+1000 false
+1010 true then output "finish decoding the line"then skip to instruction 1040
+1040 return value a to encode function
+***main function
+120 if r is 1 then skip to instruction 240
+240 first = encode function
+250 output first
+260 false
+***file output result
+400 true file output first
+410  false
+420  false
+430 false
+440 close output file
+450 close input file
+
+
+
+999 END
+
+Test case #2: 
+purpose : when file has no data
+input :
+Please enter an input filename [i.e. : x.txt] : nsaEncode.txt
+Enter a line of text:2
+ File was empty .
+
+***data
+10 set objective
+20 set instructions
+30 set i=0
+40 set s
+50 set fileName
+51 set offsett = "offset.txt" //output file
+52 set r
+53 set offset[SIZE]
+54 set index  // for index
+55 set keepGoing 
+60 set fin
+65 set count=1
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set nsaEncoder = "nsaEncoder.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN = nsaEncode.txt
+805 if fN's length is not bigger than 5 then skip to 1704
+806 return value fN to getFileName
+90 file input
+***main function
+110 output prompt "Enter a line of text:"
+110 input r =2
+*** subprogram for encode(string a, int* offset)
+1000 true then skip to instruction 1010
+1010 false
+1030 output "empty file"
+1040 return value a to encode function
+***main function
+130 if r is 2 then skip to instruction 210
+210 second = encode function
+220 output second
+230 skip to instruction 260
+260 false
+***file output result
+410 if r is equal to 2  file output second
+440 close output file
+450 close input file
+
+999 END
+
+Test case #3 : 
+purpose : when they put empty line
+input : Hello World , B , A  7
+expected result
+Please enter an input filename [i.e. : x.txt] : nsaEncode.txt
+Enter a line of text:8
+ there are no line
+
+***data
+10 set objective
+20 set instructions
+30 set i=0
+40 set s
+50 set fileName
+51 set offsett = "offset.txt" //output file
+52 set r
+53 set offset[SIZE]
+54 set index  // for index
+55 set keepGoing 
+60 set fin
+65 set count=1
+66 set r
+67 set first
+68 set second
+69 set third
+695 set forth
+696 set secret = "secret.txt"
+***user introduction 
+70 output introduction: objective, author, instructions/rules
+***read input file
+80 fileName = getFileName
+*** subprogram get user specified filename
+801 set getFileName as string
+802 set fN
+803 output prompt : "Please enter an input filename [i.e. : x.txt] : "
+804 input fN = nsaEncode.txt
+805 if fN's length is not bigger than 5 then skip to 1704
+806 return value fN to getFileName
+90 file input
+***main function
+110 output prompt "Enter a line of text:"
+110 input r = 8
+*** subprogram for encode(string a, int* offset)
+1000 if i is larger than and equal to a length then skip to instruction 1010
+1001 index = i % SIZE
+1002 output offset[index]
+1003 add offset[index] to order of a letter of a
+1005 i = i + 1 
+1006 output "Do you want to keep going? [Y/N] : "
+1007 input keepGoing
+1008 if keepGoing is 'n' or 'N' then skip to instruction 1040
+1009 skip to instruction 1000
+1010 if i is larger than 0 then output "finish encoding the line"then skip to instruction 1040
+1030 else output "empty file"
+1040 return value a to encode function
+120 fasle
+130 fasle
+140 fasle
+260 true then output : "there are no line"
+***file output result
+400 fasle
+410 fasle
+420 fasle
+430 fasle
+440 close output file
+450 close input file
+
+

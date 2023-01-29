@@ -1,0 +1,80 @@
+@copyrighted 1999 Valerie Colber
+Full Name and Student ID Number:  Kevin Jaewoo Lee 1989282
+Course and section: COMSC-110-1572
+
+1. Objective (1 sentence brief description of what this will do): calculate the miles/gallon and depending on the capacity in gallons of the fuel tank calculate the range possible with the remaining fuel. 
+
+2. Requirements (any and all requirements organized by input, processing, output, data):
+INPUT (any data items to be input): 
+-fuelTankCapacity 
+-gallonsUsed = 
+-milesDriven = 
+
+PROCESSING (list of significant parts of the objective that will become the list of code blocks in program):
+1. data definitions
+2. user introduction
+3. calculate the miles/gallon
+4. depending on the capacity in gallons of the fuel tankbcalculate the range possible with the remaining fuel.
+5. output results
+
+OUTPUT (list of anything output: introduction, data items, labels, prompts) : 
+-user introduction: introduction of objective, author, user instructions/rules
+-prompt " Use this program at least you have driven your car. "
+-label "mpg : " + mpg + "mi/g"
+-label "range :" + range + "mi " 
+
+DATA (list of all data items: definition, data type, formatting, or any other specifications):
+-fuelTankCapacity = The size of the container that stores fuel (decimal)  author selected the Capacity
+-gallonsUsed = The amount of gallons you used (decimal) author selects how much gollons are used
+-milesDriven = The distance of miles you have driven. (decimal) author selects how much miles they drove
+-mpg = The fuel consumption level of a car (decimal)
+-fuelRemaining = the amount of fuel remains (decimal)
+-range = the amount of distance that you can drive for this year (decimal)
+3. Algorithm instructions (recipe)
+***data
+10 set fuelTankCapacity = The size of the container that stores fuel
+20 set gallonsUsed = The amount of gallons you used
+30 set milesDriven = The distance of miles you have driven.
+***introduction 
+40 output introduction: objective, author, instructions/rules
+45 output prompt "Use this program at least you have driven your car. "
+***calculate the miles/gallon and depending on the capacity in gallons of the fuel tank 
+50 set mpg = milesDriven / gallonsUsed
+***depending on the capacity in gallons of the fuel tankbcalculate the range possible with the remaining fuel.
+60 set fuelRemaining = fuelTankCapacity - gallonUsed
+70 set range = fuelRemaining * mpg
+***output results
+80 output "mpg : " and mpg and "mi/g"
+90 output "range :" and range and "mi"
+
+999 END
+
+4. Test cases (list purpose of each test case, any input values, and expected results)
+
+Test case #1:
+purpose : simple example
+input values : fuelTankCapacity = 100.32, gallonsUsed = 45.67, milesDriven = 1000
+expected result :
+...
+Instructions : Use this program at least you have driven your car.
+mpg : 21.896212mi/g
+range : 1196.627983mi
+
+10 set fuelTankCapacity = 100.32
+20 set gallonsUsed = 45.67
+30 set milesDriven = 1000
+40 output Objective : calculate the miles/gallon and depending on the capacity in gallons of the fuel tank calculate the range possible with the remaining fuel.
+Author : Kevin Jaewoo Lee 1989282
+Instructions : Use this program at least you have driven your car
+50 set mpg = 1000 / 45.67 = 21.896212
+60 set fuelRemaining = 100.32 - 45.67 = 54.65
+70 set range = 54.65 * 21.896212 = 1,196.627983
+80 output mpg : 21.896212mi/g
+90 output range : 1196.62983mi
+
+999 END
+
+Test case #2: 
+purpose : when user didnt drive a car 
+
+In case user did not not move one's car I added a instruction that user must use this program after they drive their car.
